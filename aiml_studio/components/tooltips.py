@@ -25,7 +25,7 @@ def create_tooltip(
         position: Tooltip position relative to element
         with_arrow: Show arrow pointing to element
         multiline: Allow multiline text
-        width: Tooltip width (None for auto)
+        width: Tooltip width (None for auto, maps to Mantine `w` prop)
         color: Tooltip background color
         transition_props: Transition animation properties
 
@@ -35,16 +35,19 @@ def create_tooltip(
     if transition_props is None:
         transition_props = {"transition": "fade", "duration": 200}
 
-    return dmc.Tooltip(
-        label=label,
-        position=position,
-        withArrow=with_arrow,
-        multiline=multiline,
-        width=width,
-        color=color,
-        transitionProps=transition_props,
-        children=children,
-    )
+    tooltip_props: dict[str, Any] = {
+        "label": label,
+        "position": position,
+        "withArrow": with_arrow,
+        "multiline": multiline,
+        "color": color,
+        "transitionProps": transition_props,
+        "children": children,
+    }
+    if width is not None:
+        tooltip_props["w"] = width
+
+    return dmc.Tooltip(**tooltip_props)
 
 
 def create_help_icon(

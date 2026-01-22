@@ -2,6 +2,4 @@
 
 __version__ = "0.0.1"
 
-from aiml_studio.app import app
-
-__all__ = ["app"]
+__all__ = ["__version__"]

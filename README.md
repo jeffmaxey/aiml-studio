@@ -1,4 +1,4 @@
-# aiml-studio
+# AIML Studio
 
 [![Release](https://img.shields.io/github/v/release/jeffmaxey/aiml-studio)](https://img.shields.io/github/v/release/jeffmaxey/aiml-studio)
 [![Build status](https://img.shields.io/github/actions/workflow/status/jeffmaxey/aiml-studio/main.yml?branch=main)](https://github.com/jeffmaxey/aiml-studio/actions/workflows/main.yml?query=branch%3Amain)
@@ -8,10 +8,17 @@
 
 A Python web platform for running predictive analytics and machine learning experiments.
 
+## Features
+
+- Multipage Dash application with Mantine-based UI components
+- Dedicated pages for projects, analytics, data sources, logs, settings, and help
+- Reusable components for navigation, tables, modals, and notifications
+- Structured managers for state, caching, and persistence
+
 - **Github repository**: <https://github.com/jeffmaxey/aiml-studio/>
 - **Documentation** <https://jeffmaxey.github.io/aiml-studio/>
 
-## Getting started with your project
+## Getting started
 
 ### 1. Create a New Repository
 
@@ -27,15 +34,23 @@ git push -u origin main
 
 ### 2. Set Up Your Development Environment
 
-Then, install the environment and the pre-commit hooks with
+Then, install the environment and the pre-commit hooks with:
 
 ```bash
 make install
 ```
 
-This will also generate your `uv.lock` file
+This will also generate your `uv.lock` file.
 
-### 3. Run the pre-commit hooks
+### 3. Run AIML Studio locally
+
+```bash
+uv run python -m aiml_studio.app
+```
+
+Visit `http://localhost:8050` to explore the dashboard.
+
+### 4. Run the pre-commit hooks
 
 Initially, the CI/CD pipeline might be failing due to formatting issues. To resolve those run:
 
@@ -43,7 +58,7 @@ Initially, the CI/CD pipeline might be failing due to formatting issues. To reso
 uv run pre-commit run -a
 ```
 
-### 4. Commit the changes
+### 5. Commit the changes
 
 Lastly, commit the changes made by the two steps above to your repository.
 
@@ -56,9 +71,31 @@ git push origin main
 You are now ready to start development on your project!
 The CI/CD pipeline will be triggered when you open a pull request, merge to main, or when you create a new release.
 
-To finalize the set-up for publishing to PyPI, see [here](https://fpgmaas.github.io/cookiecutter-uv/features/publishing/#set-up-for-pypi).
-For activating the automatic documentation with MkDocs, see [here](https://fpgmaas.github.io/cookiecutter-uv/features/mkdocs/#enabling-the-documentation-on-github).
-To enable the code coverage reports, see [here](https://fpgmaas.github.io/cookiecutter-uv/features/codecov/).
+To finalize the set-up for publishing to PyPI, see
+[here](https://fpgmaas.github.io/cookiecutter-uv/features/publishing/#set-up-for-pypi).
+To enable the code coverage reports, see
+[here](https://fpgmaas.github.io/cookiecutter-uv/features/codecov/).
+
+## Documentation
+
+The documentation site is built with MkDocs Material and lives in `docs/`.
+
+```bash
+make docs-test   # Build docs without warnings
+make docs        # Serve docs locally
+```
+
+Documentation highlights:
+
+- Application tours and page screenshots in `docs/app-tour.md`
+- Component gallery in `docs/components.md`
+- Page overview in `docs/pages.md`
+- Architecture and feature documentation in `docs/ARCHITECTURE.md` and `docs/FEATURES_DOCUMENTATION.md`
+
+### Screenshots
+
+Place screenshots in `docs/assets/screenshots/` using the filenames listed in
+`docs/assets/screenshots/README.md`. These images are referenced in the MkDocs pages.
 
 ## Releasing a new version
 
