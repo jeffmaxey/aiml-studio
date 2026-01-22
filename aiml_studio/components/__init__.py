@@ -3,7 +3,7 @@
 from aiml_studio.components.aside import create_aside
 from aiml_studio.components.footer import create_footer
 from aiml_studio.components.header import create_header
-from aiml_studio.components.navbar import create_navbar, create_navbar_toggle
+from aiml_studio.components.navbar import create_navbar
 from aiml_studio.components.tables import (
     create_ag_grid,
     create_data_sources_grid,
@@ -19,6 +19,5 @@ __all__ = [
     "create_header",
     "create_logs_grid",
     "create_navbar",
-    "create_navbar_toggle",
     "create_projects_grid",
 ]

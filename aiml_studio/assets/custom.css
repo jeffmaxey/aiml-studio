@@ -1,62 +1,337 @@
-/* Custom styles for AIML Studio */
+/* ===================================================================
+   AIML Studio - Professional Stylesheet
+   Modern, consistent styling for the entire application
+   =================================================================== */
 
-/* Global styles */
+/* ===================================================================
+   Global Styles & Reset
+   =================================================================== */
+
+* {
+    box-sizing: border-box;
+}
+
 body {
     margin: 0;
     padding: 0;
-    font-family: 'Inter', sans-serif;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 
+                 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 
+                 'Helvetica Neue', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }
 
-/* Custom scrollbar */
+/* ===================================================================
+   Custom Scrollbar
+   =================================================================== */
+
 ::-webkit-scrollbar {
-    width: 8px;
-    height: 8px;
+    width: 10px;
+    height: 10px;
 }
 
 ::-webkit-scrollbar-track {
-    background: #f1f1f1;
+    background: var(--mantine-color-gray-0);
+    border-radius: 5px;
 }
 
 ::-webkit-scrollbar-thumb {
-    background: #888;
-    border-radius: 4px;
+    background: var(--mantine-color-gray-4);
+    border-radius: 5px;
+    transition: background 0.2s ease;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-    background: #555;
+    background: var(--mantine-color-gray-5);
 }
 
-/* Card hover effects */
+/* Dark mode scrollbar */
+[data-mantine-color-scheme="dark"] ::-webkit-scrollbar-track {
+    background: var(--mantine-color-dark-7);
+}
+
+[data-mantine-color-scheme="dark"] ::-webkit-scrollbar-thumb {
+    background: var(--mantine-color-dark-5);
+}
+
+[data-mantine-color-scheme="dark"] ::-webkit-scrollbar-thumb:hover {
+    background: var(--mantine-color-dark-4);
+}
+
+/* ===================================================================
+   Card Enhancements
+   =================================================================== */
+
 .mantine-Card-root {
     transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
 }
 
 .mantine-Card-root:hover {
     transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
 }
 
-/* Navigation link active state */
+[data-mantine-color-scheme="dark"] .mantine-Card-root:hover {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+/* ===================================================================
+   Navigation Active State
+   =================================================================== */
+
 .mantine-NavLink-root[data-active="true"] {
     background-color: var(--mantine-color-blue-light);
     color: var(--mantine-color-blue-filled);
+    font-weight: 600;
 }
 
-/* Responsive table container */
+[data-mantine-color-scheme="dark"] .mantine-NavLink-root[data-active="true"] {
+    background-color: var(--mantine-color-blue-9);
+    color: var(--mantine-color-blue-3);
+}
+
+.mantine-NavLink-root {
+    transition: background-color 0.15s ease;
+}
+
+/* ===================================================================
+   Button Enhancements
+   =================================================================== */
+
+.mantine-Button-root {
+    transition: all 0.2s ease-in-out;
+}
+
+.mantine-Button-root:hover:not(:disabled) {
+    transform: translateY(-1px);
+}
+
+.mantine-Button-root:active:not(:disabled) {
+    transform: translateY(0);
+}
+
+/* ===================================================================
+   Action Icon Enhancements
+   =================================================================== */
+
+.mantine-ActionIcon-root {
+    transition: all 0.2s ease-in-out;
+}
+
+.mantine-ActionIcon-root:hover:not(:disabled) {
+    transform: scale(1.1);
+}
+
+.mantine-ActionIcon-root:active:not(:disabled) {
+    transform: scale(0.95);
+}
+
+/* ===================================================================
+   AG Grid Table Styling
+   =================================================================== */
+
 .ag-theme-alpine {
     width: 100%;
     height: 500px;
+    --ag-font-family: 'Inter', sans-serif;
+    --ag-border-radius: 8px;
 }
 
-/* Modal overlay */
+.ag-theme-alpine .ag-header {
+    font-weight: 600;
+    background-color: var(--mantine-color-gray-0);
+}
+
+[data-mantine-color-scheme="dark"] .ag-theme-alpine .ag-header {
+    background-color: var(--mantine-color-dark-6);
+}
+
+.ag-theme-alpine .ag-row {
+    transition: background-color 0.15s ease;
+}
+
+.ag-theme-alpine .ag-row:hover {
+    background-color: var(--mantine-color-gray-0);
+}
+
+[data-mantine-color-scheme="dark"] .ag-theme-alpine .ag-row:hover {
+    background-color: var(--mantine-color-dark-6);
+}
+
+/* ===================================================================
+   Paper & Container Shadows
+   =================================================================== */
+
+.mantine-Paper-root {
+    transition: box-shadow 0.2s ease;
+}
+
+/* ===================================================================
+   Modal Overlay
+   =================================================================== */
+
 .mantine-Modal-overlay {
-    background-color: rgba(0, 0, 0, 0.5);
+    background-color: rgba(0, 0, 0, 0.55);
+    backdrop-filter: blur(4px);
 }
 
-/* Print styles */
+/* ===================================================================
+   Badge Styling
+   =================================================================== */
+
+.mantine-Badge-root {
+    font-weight: 600;
+    letter-spacing: 0.3px;
+}
+
+/* ===================================================================
+   Switch Enhancements
+   =================================================================== */
+
+.mantine-Switch-root {
+    transition: all 0.2s ease;
+}
+
+/* ===================================================================
+   Segmented Control Enhancements
+   =================================================================== */
+
+.mantine-SegmentedControl-root {
+    border-radius: 8px;
+}
+
+/* ===================================================================
+   Divider Styling
+   =================================================================== */
+
+.mantine-Divider-root {
+    opacity: 0.5;
+}
+
+/* ===================================================================
+   Focus States
+   =================================================================== */
+
+*:focus-visible {
+    outline: 2px solid var(--mantine-color-blue-5);
+    outline-offset: 2px;
+}
+
+/* ===================================================================
+   Loading States
+   =================================================================== */
+
+.loading-spinner {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 200px;
+}
+
+/* ===================================================================
+   Animations
+   =================================================================== */
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.fade-in {
+    animation: fadeIn 0.3s ease-out;
+}
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateX(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.slide-in {
+    animation: slideIn 0.3s ease-out;
+}
+
+/* ===================================================================
+   Utility Classes
+   =================================================================== */
+
+.cursor-pointer {
+    cursor: pointer;
+}
+
+.text-ellipsis {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.no-select {
+    user-select: none;
+}
+
+/* ===================================================================
+   Responsive Design Utilities
+   =================================================================== */
+
+@media (max-width: 768px) {
+    .hide-mobile {
+        display: none !important;
+    }
+}
+
+@media (min-width: 769px) {
+    .hide-desktop {
+        display: none !important;
+    }
+}
+
+/* ===================================================================
+   Print Styles
+   =================================================================== */
+
 @media print {
     .mantine-AppShell-header,
     .mantine-AppShell-navbar,
-    .mantine-AppShell-footer {
+    .mantine-AppShell-footer,
+    .mantine-AppShell-aside {
         display: none !important;
     }
+    
+    .mantine-AppShell-main {
+        padding: 0 !important;
+    }
+    
+    * {
+        background: white !important;
+        color: black !important;
+    }
+}
+
+/* ===================================================================
+   RTL Support
+   =================================================================== */
+
+[dir="rtl"] .mantine-AppShell-navbar {
+    right: 0;
+    left: auto;
+}
+
+[dir="rtl"] .mantine-NavLink-root {
+    text-align: right;
+}
+
+[dir="rtl"] .mantine-NavLink-leftSection {
+    margin-right: 0;
+    margin-left: var(--mantine-spacing-sm);
 }
