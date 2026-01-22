@@ -11,6 +11,14 @@ from aiml_studio.components.errors import (
 )
 from aiml_studio.components.footer import create_footer
 from aiml_studio.components.header import create_header
+from aiml_studio.components.keyboard_shortcuts import (
+    KEYBOARD_SHORTCUTS,
+    create_keyboard_shortcuts_modal,
+    create_keyboard_shortcuts_script,
+    create_shortcut_hint,
+    create_shortcut_item,
+    get_shortcut_for_action,
+)
 from aiml_studio.components.loading import (
     create_centered_spinner,
     create_inline_loader,
@@ -124,4 +132,11 @@ __all__ = [
     "create_step_progress",
     "create_loading_state_wrapper",
     "create_pulse_indicator",
+    # Keyboard Shortcuts
+    "KEYBOARD_SHORTCUTS",
+    "create_keyboard_shortcuts_modal",
+    "create_keyboard_shortcuts_script",
+    "create_shortcut_hint",
+    "create_shortcut_item",
+    "get_shortcut_for_action",
 ]

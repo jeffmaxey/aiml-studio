@@ -148,3 +148,23 @@ def toggle_search_modal(n_submit: int | None, mobile_clicks: int | None, opened:
         Updated modal state
     """
     return not opened
+
+
+# Keyboard shortcuts modal toggle
+@callback(
+    Output("keyboard-shortcuts-modal", "opened"),
+    Input("show-shortcuts-btn", "n_clicks"),
+    State("keyboard-shortcuts-modal", "opened"),
+    prevent_initial_call=True,
+)
+def toggle_keyboard_shortcuts_modal(n_clicks: int | None, opened: bool) -> bool:
+    """Toggle the keyboard shortcuts modal.
+
+    Args:
+        n_clicks: Number of clicks on shortcuts button
+        opened: Current modal state
+
+    Returns:
+        Updated modal state
+    """
+    return not opened

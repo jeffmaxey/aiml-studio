@@ -9,6 +9,8 @@ from aiml_studio.components import (
     create_aside,
     create_footer,
     create_header,
+    create_keyboard_shortcuts_modal,
+    create_keyboard_shortcuts_script,
     create_modal_manager,
     create_navbar,
     create_notification_manager,
@@ -57,6 +59,8 @@ app.layout = dmc.MantineProvider(
         create_modal_manager(),
         create_notification_manager(),
         create_search_modal(),
+        create_keyboard_shortcuts_modal(),
+        create_keyboard_shortcuts_script(),
         # Notification provider for toast notifications
         dmc.NotificationProvider(position="top-right"),
         # Main application shell

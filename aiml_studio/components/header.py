@@ -158,7 +158,8 @@ def create_header() -> dmc.AppShellHeader:
                                     dmc.MenuItem(
                                         "Keyboard Shortcuts",
                                         leftSection=DashIconify(icon="tabler:keyboard", width=16),
-                                        rightSection=dmc.Text("Ctrl+K", size="xs", c="dimmed"),
+                                        rightSection=dmc.Text("?", size="xs", c="dimmed"),
+                                        id="show-shortcuts-btn",
                                     ),
                                     dmc.MenuDivider(),
                                     dmc.MenuItem(
