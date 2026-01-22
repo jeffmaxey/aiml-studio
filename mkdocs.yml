@@ -8,7 +8,16 @@ repo_name: jeffmaxey/aiml-studio
 copyright: Maintained by <a href="https://jeffmaxey.com">jeffmaxey</a>.
 
 nav:
-  - Home: index.md
+  - Overview: index.md
+  - Getting Started: getting-started.md
+  - Application Tour: app-tour.md
+  - Components: components.md
+  - Pages: pages.md
+  - Architecture: ARCHITECTURE.md
+  - Feature Summary: FEATURE_IMPLEMENTATION_SUMMARY.md
+  - Features Guide: FEATURES_DOCUMENTATION.md
+  - Quick Reference: QUICK_REFERENCE.md
+  - Documentation Index: README.md
   - Modules: modules.md
 plugins:
   - search
@@ -50,3 +59,10 @@ markdown_extensions:
       permalink: true
   - pymdownx.arithmatex:
       generic: true
+  - pymdownx.details
+  - pymdownx.tabbed:
+      alternate_style: true
+  - pymdownx.superfences
+  - pymdownx.emoji:
+      emoji_index: !!python/name:pymdownx.emoji.twemoji
+      emoji_generator: !!python/name:pymdownx.emoji.to_svg

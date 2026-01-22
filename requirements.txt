@@ -1,0 +1,8 @@
+dash==3.4.0
+dash-mantine-components==2.4.1
+dash-iconify==0.1.2
+dash-ag-grid==33.3.3
+mkdocs==1.6.1
+mkdocs-material==9.7.1
+mkdocstrings==1.0.0
+mkdocstrings-python==2.0.1
