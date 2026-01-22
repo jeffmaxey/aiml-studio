@@ -16,7 +16,7 @@ from typing import Any
 
 import dash
 import dash_mantine_components as dmc
-from dash import Input, Output, callback, dcc, html
+from dash import Input, Output, callback, dcc
 
 from aiml_studio.components.navigation import create_sidebar
 from aiml_studio.layouts import analytics, data_sources, projects
