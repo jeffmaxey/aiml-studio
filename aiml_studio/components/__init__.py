@@ -3,12 +3,43 @@
 from aiml_studio.components.aside import create_aside
 from aiml_studio.components.footer import create_footer
 from aiml_studio.components.header import create_header
+from aiml_studio.components.modals import (
+    create_alert_modal,
+    create_confirm_modal,
+    create_drawer,
+    create_form_modal,
+    create_modal,
+    create_modal_manager,
+)
 from aiml_studio.components.navbar import create_navbar
+from aiml_studio.components.notifications import (
+    create_inline_alert,
+    create_notification,
+    create_notification_bell,
+    create_notification_list,
+    create_notification_manager,
+    create_notification_provider,
+    create_toast_notification,
+)
 from aiml_studio.components.tables import (
     create_ag_grid,
     create_data_sources_grid,
     create_logs_grid,
     create_projects_grid,
+)
+from aiml_studio.components.tooltips import (
+    create_contextual_help_button,
+    create_field_description,
+    create_help_content_section,
+    create_help_drawer_trigger,
+    create_help_icon,
+    create_help_section,
+    create_help_text,
+    create_info_icon,
+    create_keyboard_shortcut,
+    create_label_with_help,
+    create_popover_help,
+    create_tooltip,
 )
 
 __all__ = [
@@ -20,4 +51,32 @@ __all__ = [
     "create_logs_grid",
     "create_navbar",
     "create_projects_grid",
+    # Modals
+    "create_modal",
+    "create_confirm_modal",
+    "create_alert_modal",
+    "create_form_modal",
+    "create_drawer",
+    "create_modal_manager",
+    # Notifications
+    "create_notification_provider",
+    "create_notification",
+    "create_inline_alert",
+    "create_toast_notification",
+    "create_notification_bell",
+    "create_notification_list",
+    "create_notification_manager",
+    # Tooltips and Help
+    "create_tooltip",
+    "create_help_icon",
+    "create_info_icon",
+    "create_help_text",
+    "create_label_with_help",
+    "create_popover_help",
+    "create_contextual_help_button",
+    "create_help_drawer_trigger",
+    "create_help_section",
+    "create_help_content_section",
+    "create_keyboard_shortcut",
+    "create_field_description",
 ]
