@@ -2,28 +2,86 @@
 
 ## Overview
 
-This document describes the enhanced architecture of AIML Studio with integrated managers and utilities.
+AIML Studio is a professional machine learning platform with a modern, intuitive UI/UX inspired by industry-leading platforms like MLflow. This document describes the enhanced architecture with integrated managers, utilities, and comprehensive UI/UX design system.
 
-## New Features
+## UI/UX Design Philosophy
 
-### 1. Header Controls
-- **Navbar Toggle Button**: Top-left button to collapse/expand the navigation sidebar
-- **Aside Toggle Button**: Top-right button to collapse/expand the aside panel
+### Inspiration
+The UI/UX design draws inspiration from:
+- **MLflow**: Professional ML platform with clean, data-focused design
+- **Dash Mantine Components v2**: Modern React-based UI framework
+- **Material Design**: Consistent design language and interaction patterns
 
-### 2. Navbar Appearance Controls
-- **Theme Toggle**: Switch between light and dark modes (Sun/Moon icons)
-- **RTL Toggle**: Switch between left-to-right (LTR) and right-to-left (RTL) text direction
+### Design Principles
+1. **Professional & Clean**: Minimalist design with focus on data and functionality
+2. **Consistent**: Unified design language across all pages and components
+3. **Responsive**: Mobile-first approach with adaptive layouts
+4. **Accessible**: WCAG 2.1 compliant with keyboard navigation support
+5. **Performance**: Optimized animations and smooth interactions
 
-### 3. Professional Stylesheet
-A comprehensive CSS stylesheet (`assets/custom.css`) provides:
-- Modern animations and transitions
-- Enhanced scrollbar styling for light and dark modes
-- Card hover effects
-- Consistent button and icon interactions
-- AG Grid table styling
-- RTL support
-- Print-friendly styles
-- Responsive design utilities
+## Enhanced Features
+
+### 1. Professional Header
+- **Logo & Branding**: Themed icon with gradient styling and subtitle
+- **Search**: Quick search functionality (placeholder for future implementation)
+- **Notifications**: Real-time notification indicator with pulse animation
+- **User Menu**: Avatar with dropdown for profile, settings, and logout
+- **Controls**: Navbar and aside panel toggles
+
+### 2. Enhanced Navigation Sidebar
+- **Section Organization**: 
+  - Core: Home, Settings, Help, Logs
+  - Admin: Analytics, Data Sources, Projects
+  - Appearance: Theme and RTL toggles
+- **Visual Hierarchy**: Section headers with themed icons
+- **Active States**: Gradient background for active links
+- **Quick Tips**: Contextual help panel at bottom
+- **Smooth Animations**: Hover and transition effects
+
+### 3. Professional Theme System
+- **Color Palette**: MLflow-inspired color scheme
+  - Primary: #0194E2 (MLflow blue)
+  - Success: #00B388 (Professional green)
+  - Warning: #FFB240 (Amber)
+  - Error: #FF5252 (Clear red)
+- **Typography**: Inter font family with optimized hierarchy
+- **Spacing System**: Consistent 8px grid system
+- **Shadow System**: Layered shadows for depth
+- **Border Radius**: Consistent rounded corners (4px-16px)
+
+### 4. Enhanced CSS Architecture
+- **CSS Variables**: Design tokens for easy theming
+- **Modern Animations**: fadeIn, slideIn, scaleIn with smooth easing
+- **Status Indicators**: Colored dots with pulse animation
+- **Professional Scrollbar**: Custom styled for light/dark modes
+- **Responsive Utilities**: Mobile and desktop visibility classes
+- **Print Styles**: Clean printing without UI chrome
+
+### 5. Page-Specific Enhancements
+
+#### Home Page
+- **Welcome Banner**: Gradient text, illustration, action buttons
+- **Key Metrics**: Live dashboard with trend indicators
+- **Quick Actions**: Card-based navigation with themed icons
+- **Recent Activity**: Table with user attribution
+
+#### Analytics Dashboard
+- **Timeframe Selector**: 24h, 7d, 30d, 90d options
+- **Statistics Cards**: Trend indicators with status badges
+- **Chart Placeholders**: Professional empty states
+- **Detailed Metrics Table**: Sortable with last updated timestamps
+
+#### Projects Page
+- **View Toggle**: Card and table view options
+- **Project Cards**: Status badges, icons, action buttons
+- **Statistics Overview**: Total, active, completed, inactive counts
+- **Create Modal**: Professional form with validation
+
+#### Footer
+- **System Status**: Live operational status indicator
+- **Version Badge**: Current application version
+- **Quick Links**: Documentation, API, GitHub
+- **Social Icons**: Community engagement links
 
 ## Architecture
 

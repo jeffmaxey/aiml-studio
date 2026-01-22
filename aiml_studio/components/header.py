@@ -131,34 +131,32 @@ def create_header() -> dmc.AppShellHeader:
                                         style={"cursor": "pointer"},
                                     )
                                 ),
-                                dmc.MenuDropdown(
-                                    [
-                                        dmc.MenuItem(
-                                            "Profile",
-                                            leftSection=DashIconify(icon="tabler:user", width=16),
-                                        ),
-                                        dmc.MenuItem(
-                                            "Settings",
-                                            leftSection=DashIconify(icon="tabler:settings", width=16),
-                                        ),
-                                        dmc.MenuDivider(),
-                                        dmc.MenuItem(
-                                            "Documentation",
-                                            leftSection=DashIconify(icon="tabler:book", width=16),
-                                        ),
-                                        dmc.MenuItem(
-                                            "Keyboard Shortcuts",
-                                            leftSection=DashIconify(icon="tabler:keyboard", width=16),
-                                            rightSection=dmc.Text("Ctrl+K", size="xs", c="dimmed"),
-                                        ),
-                                        dmc.MenuDivider(),
-                                        dmc.MenuItem(
-                                            "Logout",
-                                            leftSection=DashIconify(icon="tabler:logout", width=16),
-                                            color="red",
-                                        ),
-                                    ]
-                                ),
+                                dmc.MenuDropdown([
+                                    dmc.MenuItem(
+                                        "Profile",
+                                        leftSection=DashIconify(icon="tabler:user", width=16),
+                                    ),
+                                    dmc.MenuItem(
+                                        "Settings",
+                                        leftSection=DashIconify(icon="tabler:settings", width=16),
+                                    ),
+                                    dmc.MenuDivider(),
+                                    dmc.MenuItem(
+                                        "Documentation",
+                                        leftSection=DashIconify(icon="tabler:book", width=16),
+                                    ),
+                                    dmc.MenuItem(
+                                        "Keyboard Shortcuts",
+                                        leftSection=DashIconify(icon="tabler:keyboard", width=16),
+                                        rightSection=dmc.Text("Ctrl+K", size="xs", c="dimmed"),
+                                    ),
+                                    dmc.MenuDivider(),
+                                    dmc.MenuItem(
+                                        "Logout",
+                                        leftSection=DashIconify(icon="tabler:logout", width=16),
+                                        color="red",
+                                    ),
+                                ]),
                             ],
                             position="bottom-end",
                             width=240,

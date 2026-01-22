@@ -194,180 +194,178 @@ def create_projects_layout() -> html.Div:
     projects_grid = create_projects_grid()
     projects_grid.rowData = sample_projects
 
-    return html.Div(
-        [
-            dmc.Stack(
-                [
-                    # Page header
-                    dmc.Group(
-                        [
-                            dmc.Stack(
-                                [
-                                    dmc.Title("Projects", order=2),
-                                    dmc.Text("Manage your machine learning projects", c="dimmed", size="sm"),
-                                ],
-                                gap=4,
-                            ),
-                            dmc.Button(
-                                "Create New Project",
-                                leftSection=DashIconify(icon="tabler:plus", width=18),
-                                id="create-project-button",
-                                variant="gradient",
-                                gradient={"from": "blue", "to": "cyan", "deg": 135},
-                            ),
-                        ],
-                        justify="space-between",
-                        mb="md",
-                    ),
-                    # Project statistics
-                    dmc.SimpleGrid(
-                        cols={"base": 1, "sm": 2, "md": 4},
-                        spacing="md",
-                        children=[
-                            create_project_stat_card("Total Projects", "4", "tabler:folder", "blue"),
-                            create_project_stat_card("Active", "2", "tabler:player-play", "green"),
-                            create_project_stat_card("Completed", "1", "tabler:check", "teal"),
-                            create_project_stat_card("Inactive", "1", "tabler:player-pause", "gray"),
-                        ],
-                    ),
-                    # View toggle and project cards
-                    dmc.Card(
-                        [
-                            dmc.Group(
-                                [
-                                    dmc.Title("Your Projects", order=4),
-                                    dmc.Group(
-                                        [
-                                            dmc.SegmentedControl(
-                                                id="project-view-toggle",
-                                                value="cards",
-                                                data=[
-                                                    {"label": "Cards", "value": "cards"},
-                                                    {"label": "Table", "value": "table"},
-                                                ],
-                                            ),
-                                            dmc.ActionIcon(
-                                                DashIconify(icon="tabler:filter", width=18),
-                                                variant="light",
-                                                size="lg",
-                                            ),
-                                        ],
-                                        gap="sm",
-                                    ),
-                                ],
-                                justify="space-between",
-                                mb="lg",
-                            ),
-                            dmc.SimpleGrid(
-                                id="projects-cards-view",
-                                cols={"base": 1, "sm": 2, "lg": 3},
-                                spacing="md",
-                                children=[create_project_card(project) for project in sample_projects],
-                            ),
-                        ],
-                        withBorder=True,
-                        shadow="sm",
-                        radius="lg",
-                        p="lg",
-                    ),
-                    # Projects table
-                    dmc.Card(
-                        [
-                            dmc.Group(
-                                [
-                                    dmc.Title("All Projects (Table View)", order=4),
-                                    dmc.Group(
-                                        [
-                                            dmc.ActionIcon(
-                                                DashIconify(icon="tabler:refresh", width=18),
-                                                variant="light",
-                                                size="lg",
-                                            ),
-                                            dmc.ActionIcon(
-                                                DashIconify(icon="tabler:download", width=18),
-                                                variant="light",
-                                                size="lg",
-                                            ),
-                                        ],
-                                        gap="xs",
-                                    ),
-                                ],
-                                justify="space-between",
-                                mb="md",
-                            ),
-                            projects_grid,
-                        ],
-                        withBorder=True,
-                        shadow="sm",
-                        radius="lg",
-                        p="lg",
-                        className="slide-in",
-                    ),
-                ],
-                gap="lg",
-            ),
-            # Create Project Modal
-            dmc.Modal(
-                id="create-project-modal",
-                title="Create New Project",
-                size="lg",
-                children=[
-                    dmc.Stack(
-                        [
-                            dmc.TextInput(
-                                label="Project Name",
-                                placeholder="Enter project name",
-                                id="project-name-input",
-                                required=True,
-                                leftSection=DashIconify(icon="tabler:folder", width=16),
-                            ),
-                            dmc.Textarea(
-                                label="Description",
-                                placeholder="Enter project description",
-                                id="project-description-input",
-                                minRows=3,
-                                required=True,
-                            ),
-                            dmc.Select(
-                                label="Project Status",
-                                placeholder="Select status",
-                                id="project-status-select",
-                                data=[{"label": s, "value": s} for s in PROJECT_STATUSES],
-                                value="Active",
-                                required=True,
-                                leftSection=DashIconify(icon="tabler:player-play", width=16),
-                            ),
-                            dmc.MultiSelect(
-                                label="Tags",
-                                placeholder="Add tags",
-                                id="project-tags-input",
-                                data=[
-                                    {"label": "Machine Learning", "value": "ml"},
-                                    {"label": "Data Analysis", "value": "analysis"},
-                                    {"label": "Prediction", "value": "prediction"},
-                                    {"label": "Classification", "value": "classification"},
-                                ],
-                            ),
-                            dmc.Group(
-                                [
-                                    dmc.Button(
-                                        "Cancel",
-                                        variant="subtle",
-                                        id="cancel-project-button",
-                                    ),
-                                    dmc.Button(
-                                        "Create Project",
-                                        id="save-project-button",
-                                        leftSection=DashIconify(icon="tabler:check", width=16),
-                                    ),
-                                ],
-                                justify="flex-end",
-                                mt="md",
-                            ),
-                        ],
-                        gap="md",
-                    )
-                ],
-            ),
-        ]
-    )
+    return html.Div([
+        dmc.Stack(
+            [
+                # Page header
+                dmc.Group(
+                    [
+                        dmc.Stack(
+                            [
+                                dmc.Title("Projects", order=2),
+                                dmc.Text("Manage your machine learning projects", c="dimmed", size="sm"),
+                            ],
+                            gap=4,
+                        ),
+                        dmc.Button(
+                            "Create New Project",
+                            leftSection=DashIconify(icon="tabler:plus", width=18),
+                            id="create-project-button",
+                            variant="gradient",
+                            gradient={"from": "blue", "to": "cyan", "deg": 135},
+                        ),
+                    ],
+                    justify="space-between",
+                    mb="md",
+                ),
+                # Project statistics
+                dmc.SimpleGrid(
+                    cols={"base": 1, "sm": 2, "md": 4},
+                    spacing="md",
+                    children=[
+                        create_project_stat_card("Total Projects", "4", "tabler:folder", "blue"),
+                        create_project_stat_card("Active", "2", "tabler:player-play", "green"),
+                        create_project_stat_card("Completed", "1", "tabler:check", "teal"),
+                        create_project_stat_card("Inactive", "1", "tabler:player-pause", "gray"),
+                    ],
+                ),
+                # View toggle and project cards
+                dmc.Card(
+                    [
+                        dmc.Group(
+                            [
+                                dmc.Title("Your Projects", order=4),
+                                dmc.Group(
+                                    [
+                                        dmc.SegmentedControl(
+                                            id="project-view-toggle",
+                                            value="cards",
+                                            data=[
+                                                {"label": "Cards", "value": "cards"},
+                                                {"label": "Table", "value": "table"},
+                                            ],
+                                        ),
+                                        dmc.ActionIcon(
+                                            DashIconify(icon="tabler:filter", width=18),
+                                            variant="light",
+                                            size="lg",
+                                        ),
+                                    ],
+                                    gap="sm",
+                                ),
+                            ],
+                            justify="space-between",
+                            mb="lg",
+                        ),
+                        dmc.SimpleGrid(
+                            id="projects-cards-view",
+                            cols={"base": 1, "sm": 2, "lg": 3},
+                            spacing="md",
+                            children=[create_project_card(project) for project in sample_projects],
+                        ),
+                    ],
+                    withBorder=True,
+                    shadow="sm",
+                    radius="lg",
+                    p="lg",
+                ),
+                # Projects table
+                dmc.Card(
+                    [
+                        dmc.Group(
+                            [
+                                dmc.Title("All Projects (Table View)", order=4),
+                                dmc.Group(
+                                    [
+                                        dmc.ActionIcon(
+                                            DashIconify(icon="tabler:refresh", width=18),
+                                            variant="light",
+                                            size="lg",
+                                        ),
+                                        dmc.ActionIcon(
+                                            DashIconify(icon="tabler:download", width=18),
+                                            variant="light",
+                                            size="lg",
+                                        ),
+                                    ],
+                                    gap="xs",
+                                ),
+                            ],
+                            justify="space-between",
+                            mb="md",
+                        ),
+                        projects_grid,
+                    ],
+                    withBorder=True,
+                    shadow="sm",
+                    radius="lg",
+                    p="lg",
+                    className="slide-in",
+                ),
+            ],
+            gap="lg",
+        ),
+        # Create Project Modal
+        dmc.Modal(
+            id="create-project-modal",
+            title="Create New Project",
+            size="lg",
+            children=[
+                dmc.Stack(
+                    [
+                        dmc.TextInput(
+                            label="Project Name",
+                            placeholder="Enter project name",
+                            id="project-name-input",
+                            required=True,
+                            leftSection=DashIconify(icon="tabler:folder", width=16),
+                        ),
+                        dmc.Textarea(
+                            label="Description",
+                            placeholder="Enter project description",
+                            id="project-description-input",
+                            minRows=3,
+                            required=True,
+                        ),
+                        dmc.Select(
+                            label="Project Status",
+                            placeholder="Select status",
+                            id="project-status-select",
+                            data=[{"label": s, "value": s} for s in PROJECT_STATUSES],
+                            value="Active",
+                            required=True,
+                            leftSection=DashIconify(icon="tabler:player-play", width=16),
+                        ),
+                        dmc.MultiSelect(
+                            label="Tags",
+                            placeholder="Add tags",
+                            id="project-tags-input",
+                            data=[
+                                {"label": "Machine Learning", "value": "ml"},
+                                {"label": "Data Analysis", "value": "analysis"},
+                                {"label": "Prediction", "value": "prediction"},
+                                {"label": "Classification", "value": "classification"},
+                            ],
+                        ),
+                        dmc.Group(
+                            [
+                                dmc.Button(
+                                    "Cancel",
+                                    variant="subtle",
+                                    id="cancel-project-button",
+                                ),
+                                dmc.Button(
+                                    "Create Project",
+                                    id="save-project-button",
+                                    leftSection=DashIconify(icon="tabler:check", width=16),
+                                ),
+                            ],
+                            justify="flex-end",
+                            mt="md",
+                        ),
+                    ],
+                    gap="md",
+                )
+            ],
+        ),
+    ])

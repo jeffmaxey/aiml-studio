@@ -183,158 +183,156 @@ def create_home_layout() -> html.Div:
         },
     ]
 
-    return html.Div(
-        [
-            dmc.Stack(
-                [
-                    # Welcome banner
-                    dmc.Paper(
-                        [
-                            dmc.Grid(
-                                [
-                                    dmc.GridCol(
-                                        dmc.Stack(
-                                            [
-                                                dmc.Group(
-                                                    [
-                                                        dmc.ThemeIcon(
-                                                            DashIconify(icon="tabler:sparkles", width=28),
-                                                            size="xl",
-                                                            radius="md",
-                                                            variant="gradient",
-                                                            gradient={"from": "blue", "to": "cyan", "deg": 135},
-                                                        ),
-                                                        dmc.Title("Welcome to AIML Studio", order=2, className="gradient-text"),
-                                                    ],
-                                                    gap="md",
-                                                ),
-                                                dmc.Text(
-                                                    "Your professional platform for running predictive analytics and machine learning experiments.",
-                                                    size="lg",
-                                                    c="dimmed",
-                                                ),
-                                                dmc.Group(
-                                                    [
-                                                        dmc.Button(
-                                                            "Get Started",
-                                                            leftSection=DashIconify(icon="tabler:rocket", width=16),
-                                                            size="md",
-                                                            variant="gradient",
-                                                            gradient={"from": "blue", "to": "cyan", "deg": 135},
-                                                        ),
-                                                        dmc.Button(
-                                                            "View Documentation",
-                                                            leftSection=DashIconify(icon="tabler:book", width=16),
-                                                            size="md",
-                                                            variant="light",
-                                                        ),
-                                                    ],
-                                                    gap="md",
-                                                ),
-                                            ],
-                                            gap="lg",
-                                        ),
-                                        span={"base": 12, "md": 8},
-                                    ),
-                                    dmc.GridCol(
-                                        dmc.Center(
-                                            DashIconify(
-                                                icon="tabler:chart-dots-3",
-                                                width=180,
-                                                color="var(--color-primary)",
-                                                style={"opacity": "0.1"},
-                                            ),
-                                            h="100%",
-                                        ),
-                                        span={"base": 12, "md": 4},
-                                        className="hide-mobile",
-                                    ),
-                                ],
-                                gutter="xl",
-                            )
-                        ],
-                        p="xl",
-                        withBorder=True,
-                        radius="lg",
-                        shadow="md",
-                        className="fade-in",
-                    ),
-                    # Key metrics
-                    dmc.Stack(
-                        [
-                            dmc.Group(
-                                [
-                                    dmc.Title("Key Metrics", order=3),
-                                    dmc.Badge("Live", color="green", variant="dot", size="lg"),
-                                ],
-                                justify="space-between",
-                            ),
-                            dmc.SimpleGrid(
-                                cols={"base": 1, "sm": 2, "md": 4},
-                                spacing="md",
-                                children=[
-                                    create_metric_card("Total Projects", "24", "tabler:folder", "blue", "↑ 12%"),
-                                    create_metric_card(
-                                        "Active Models", "8", "tabler:brain", "green", "↑ 3%"
-                                    ),
-                                    create_metric_card("Data Sources", "12", "tabler:database", "violet", "→ 0%"),
-                                    create_metric_card("API Calls", "23.4K", "tabler:api", "orange", "↑ 23%"),
-                                ],
-                            ),
-                        ],
-                        gap="md",
-                    ),
-                    # Quick actions
-                    dmc.Stack(
-                        [
-                            dmc.Title("Quick Actions", order=3),
-                            dmc.SimpleGrid(
-                                cols={"base": 1, "sm": 2, "md": 4},
-                                spacing="md",
-                                children=action_cards,
-                            ),
-                        ],
-                        gap="md",
-                    ),
-                    # Recent activity
-                    dmc.Card(
-                        [
-                            dmc.Group(
-                                [
-                                    dmc.Title("Recent Activity", order=3),
-                                    dmc.Group(
+    return html.Div([
+        dmc.Stack(
+            [
+                # Welcome banner
+                dmc.Paper(
+                    [
+                        dmc.Grid(
+                            [
+                                dmc.GridCol(
+                                    dmc.Stack(
                                         [
-                                            dmc.ActionIcon(
-                                                DashIconify(icon="tabler:refresh", width=18),
-                                                variant="light",
-                                                size="lg",
+                                            dmc.Group(
+                                                [
+                                                    dmc.ThemeIcon(
+                                                        DashIconify(icon="tabler:sparkles", width=28),
+                                                        size="xl",
+                                                        radius="md",
+                                                        variant="gradient",
+                                                        gradient={"from": "blue", "to": "cyan", "deg": 135},
+                                                    ),
+                                                    dmc.Title(
+                                                        "Welcome to AIML Studio", order=2, className="gradient-text"
+                                                    ),
+                                                ],
+                                                gap="md",
                                             ),
-                                            dmc.ActionIcon(
-                                                DashIconify(icon="tabler:filter", width=18),
-                                                variant="light",
+                                            dmc.Text(
+                                                "Your professional platform for running predictive analytics and machine learning experiments.",
                                                 size="lg",
+                                                c="dimmed",
+                                            ),
+                                            dmc.Group(
+                                                [
+                                                    dmc.Button(
+                                                        "Get Started",
+                                                        leftSection=DashIconify(icon="tabler:rocket", width=16),
+                                                        size="md",
+                                                        variant="gradient",
+                                                        gradient={"from": "blue", "to": "cyan", "deg": 135},
+                                                    ),
+                                                    dmc.Button(
+                                                        "View Documentation",
+                                                        leftSection=DashIconify(icon="tabler:book", width=16),
+                                                        size="md",
+                                                        variant="light",
+                                                    ),
+                                                ],
+                                                gap="md",
                                             ),
                                         ],
-                                        gap="xs",
+                                        gap="lg",
                                     ),
-                                ],
-                                justify="space-between",
-                                mb="md",
-                            ),
-                            create_ag_grid(
-                                grid_id="recent-activity-grid",
-                                column_defs=recent_activity_columns,
-                                row_data=recent_activity_data,
-                                pagination=False,
-                            ),
-                        ],
-                        withBorder=True,
-                        shadow="sm",
-                        radius="lg",
-                        p="lg",
-                    ),
-                ],
-                gap="xl",
-            )
-        ]
-    )
+                                    span={"base": 12, "md": 8},
+                                ),
+                                dmc.GridCol(
+                                    dmc.Center(
+                                        DashIconify(
+                                            icon="tabler:chart-dots-3",
+                                            width=180,
+                                            color="var(--color-primary)",
+                                            style={"opacity": "0.1"},
+                                        ),
+                                        h="100%",
+                                    ),
+                                    span={"base": 12, "md": 4},
+                                    className="hide-mobile",
+                                ),
+                            ],
+                            gutter="xl",
+                        )
+                    ],
+                    p="xl",
+                    withBorder=True,
+                    radius="lg",
+                    shadow="md",
+                    className="fade-in",
+                ),
+                # Key metrics
+                dmc.Stack(
+                    [
+                        dmc.Group(
+                            [
+                                dmc.Title("Key Metrics", order=3),
+                                dmc.Badge("Live", color="green", variant="dot", size="lg"),
+                            ],
+                            justify="space-between",
+                        ),
+                        dmc.SimpleGrid(
+                            cols={"base": 1, "sm": 2, "md": 4},
+                            spacing="md",
+                            children=[
+                                create_metric_card("Total Projects", "24", "tabler:folder", "blue", "↑ 12%"),
+                                create_metric_card("Active Models", "8", "tabler:brain", "green", "↑ 3%"),
+                                create_metric_card("Data Sources", "12", "tabler:database", "violet", "→ 0%"),
+                                create_metric_card("API Calls", "23.4K", "tabler:api", "orange", "↑ 23%"),
+                            ],
+                        ),
+                    ],
+                    gap="md",
+                ),
+                # Quick actions
+                dmc.Stack(
+                    [
+                        dmc.Title("Quick Actions", order=3),
+                        dmc.SimpleGrid(
+                            cols={"base": 1, "sm": 2, "md": 4},
+                            spacing="md",
+                            children=action_cards,
+                        ),
+                    ],
+                    gap="md",
+                ),
+                # Recent activity
+                dmc.Card(
+                    [
+                        dmc.Group(
+                            [
+                                dmc.Title("Recent Activity", order=3),
+                                dmc.Group(
+                                    [
+                                        dmc.ActionIcon(
+                                            DashIconify(icon="tabler:refresh", width=18),
+                                            variant="light",
+                                            size="lg",
+                                        ),
+                                        dmc.ActionIcon(
+                                            DashIconify(icon="tabler:filter", width=18),
+                                            variant="light",
+                                            size="lg",
+                                        ),
+                                    ],
+                                    gap="xs",
+                                ),
+                            ],
+                            justify="space-between",
+                            mb="md",
+                        ),
+                        create_ag_grid(
+                            grid_id="recent-activity-grid",
+                            column_defs=recent_activity_columns,
+                            row_data=recent_activity_data,
+                            pagination=False,
+                        ),
+                    ],
+                    withBorder=True,
+                    shadow="sm",
+                    radius="lg",
+                    p="lg",
+                ),
+            ],
+            gap="xl",
+        )
+    ])
