@@ -13,7 +13,6 @@ def create_tooltip(
     position: Literal["top", "right", "bottom", "left"] = "top",
     with_arrow: bool = True,
     multiline: bool = False,
-    width: int | None = None,
     color: str = "dark",
     transition_props: dict[str, Any] | None = None,
 ) -> dmc.Tooltip:
@@ -25,7 +24,6 @@ def create_tooltip(
         position: Tooltip position relative to element
         with_arrow: Show arrow pointing to element
         multiline: Allow multiline text
-        width: Tooltip width (None for auto)
         color: Tooltip background color
         transition_props: Transition animation properties
 
@@ -40,7 +38,6 @@ def create_tooltip(
         position=position,
         withArrow=with_arrow,
         multiline=multiline,
-        width=width,
         color=color,
         transitionProps=transition_props,
         children=children,
@@ -68,7 +65,6 @@ def create_help_icon(
         children=DashIconify(icon=icon, width=size, color=color, style={"cursor": "help"}),
         label=tooltip_text,
         multiline=True,
-        width=300,
     )
 
 
@@ -93,7 +89,6 @@ def create_info_icon(
         children=DashIconify(icon=icon, width=size, color=color, style={"cursor": "help"}),
         label=tooltip_text,
         multiline=True,
-        width=300,
     )
 
 
