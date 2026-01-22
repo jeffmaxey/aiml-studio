@@ -80,15 +80,25 @@ def create_header() -> dmc.AppShellHeader:
                     ],
                     gap="md",
                 ),
-                # Right section with notifications, search, and user menu
+                # Right section with search, notifications, and user menu
                 dmc.Group(
                     [
-                        # Search button
+                        # Search button/input
+                        dmc.TextInput(
+                            id="global-search-input",
+                            placeholder="Search... (Ctrl+K)",
+                            leftSection=DashIconify(icon="tabler:search", width=18),
+                            rightSection=dmc.Badge("Ctrl+K", size="xs", variant="light", color="gray"),
+                            style={"width": "300px"},
+                            className="hide-mobile",
+                        ),
                         dmc.ActionIcon(
                             DashIconify(icon="tabler:search", width=20),
                             variant="subtle",
                             size="lg",
                             color="gray",
+                            id="mobile-search-btn",
+                            className="hide-desktop",
                         ),
                         # Notifications
                         dmc.Indicator(
@@ -148,7 +158,8 @@ def create_header() -> dmc.AppShellHeader:
                                     dmc.MenuItem(
                                         "Keyboard Shortcuts",
                                         leftSection=DashIconify(icon="tabler:keyboard", width=16),
-                                        rightSection=dmc.Text("Ctrl+K", size="xs", c="dimmed"),
+                                        rightSection=dmc.Text("?", size="xs", c="dimmed"),
+                                        id="show-shortcuts-btn",
                                     ),
                                     dmc.MenuDivider(),
                                     dmc.MenuItem(

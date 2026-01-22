@@ -1,8 +1,37 @@
 """Reusable UI components for AIML Studio."""
 
 from aiml_studio.components.aside import create_aside
+from aiml_studio.components.errors import (
+    create_error_alert,
+    create_error_boundary,
+    create_info_alert,
+    create_success_alert,
+    create_validation_error_list,
+    create_warning_alert,
+)
 from aiml_studio.components.footer import create_footer
 from aiml_studio.components.header import create_header
+from aiml_studio.components.keyboard_shortcuts import (
+    KEYBOARD_SHORTCUTS,
+    create_keyboard_shortcuts_modal,
+    create_keyboard_shortcuts_script,
+    create_shortcut_hint,
+    create_shortcut_item,
+    get_shortcut_for_action,
+)
+from aiml_studio.components.loading import (
+    create_centered_spinner,
+    create_inline_loader,
+    create_loading_overlay,
+    create_loading_state_wrapper,
+    create_progress_bar,
+    create_pulse_indicator,
+    create_skeleton_card,
+    create_skeleton_loader,
+    create_spinner,
+    create_step_progress,
+    create_table_skeleton,
+)
 from aiml_studio.components.modals import (
     create_alert_modal,
     create_confirm_modal,
@@ -21,6 +50,7 @@ from aiml_studio.components.notifications import (
     create_notification_provider,
     create_toast_notification,
 )
+from aiml_studio.components.search import create_search_modal, create_search_result_item, filter_search_results
 from aiml_studio.components.tables import (
     create_ag_grid,
     create_data_sources_grid,
@@ -79,4 +109,34 @@ __all__ = [
     "create_help_content_section",
     "create_keyboard_shortcut",
     "create_field_description",
+    # Search
+    "create_search_modal",
+    "create_search_result_item",
+    "filter_search_results",
+    # Error Handling
+    "create_error_alert",
+    "create_warning_alert",
+    "create_info_alert",
+    "create_success_alert",
+    "create_validation_error_list",
+    "create_error_boundary",
+    # Loading States
+    "create_skeleton_loader",
+    "create_skeleton_card",
+    "create_table_skeleton",
+    "create_spinner",
+    "create_centered_spinner",
+    "create_progress_bar",
+    "create_loading_overlay",
+    "create_inline_loader",
+    "create_step_progress",
+    "create_loading_state_wrapper",
+    "create_pulse_indicator",
+    # Keyboard Shortcuts
+    "KEYBOARD_SHORTCUTS",
+    "create_keyboard_shortcuts_modal",
+    "create_keyboard_shortcuts_script",
+    "create_shortcut_hint",
+    "create_shortcut_item",
+    "get_shortcut_for_action",
 ]

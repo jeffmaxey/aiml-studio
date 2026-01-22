@@ -1,7 +1,7 @@
 """Analytics dashboard page layout."""
 
 import dash_mantine_components as dmc
-from dash import html
+from dash import dcc, html
 from dash_iconify import DashIconify
 
 from aiml_studio.components import create_ag_grid
@@ -112,6 +112,8 @@ def create_analytics_layout() -> html.Div:
     ]
 
     return html.Div([
+        # Hidden download component
+        dcc.Download(id="download-analytics-data"),
         dmc.Stack(
             [
                 # Page header
@@ -136,10 +138,30 @@ def create_analytics_layout() -> html.Div:
                                         {"label": "90d", "value": "90d"},
                                     ],
                                 ),
-                                dmc.Button(
-                                    "Export",
-                                    leftSection=DashIconify(icon="tabler:download", width=16),
-                                    variant="light",
+                                dmc.Menu(
+                                    [
+                                        dmc.MenuTarget(
+                                            dmc.Button(
+                                                "Export",
+                                                leftSection=DashIconify(icon="tabler:download", width=16),
+                                                variant="light",
+                                            )
+                                        ),
+                                        dmc.MenuDropdown(
+                                            [
+                                                dmc.MenuItem(
+                                                    "Export as CSV",
+                                                    id="export-analytics-csv",
+                                                    leftSection=DashIconify(icon="tabler:file-text", width=16),
+                                                ),
+                                                dmc.MenuItem(
+                                                    "Export as JSON",
+                                                    id="export-analytics-json",
+                                                    leftSection=DashIconify(icon="tabler:file-code", width=16),
+                                                ),
+                                            ]
+                                        ),
+                                    ]
                                 ),
                             ],
                             gap="sm",
