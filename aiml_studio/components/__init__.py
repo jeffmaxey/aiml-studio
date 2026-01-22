@@ -21,6 +21,7 @@ from aiml_studio.components.notifications import (
     create_notification_provider,
     create_toast_notification,
 )
+from aiml_studio.components.search import create_search_modal, create_search_result_item, filter_search_results
 from aiml_studio.components.tables import (
     create_ag_grid,
     create_data_sources_grid,
@@ -79,4 +80,8 @@ __all__ = [
     "create_help_content_section",
     "create_keyboard_shortcut",
     "create_field_description",
+    # Search
+    "create_search_modal",
+    "create_search_result_item",
+    "filter_search_results",
 ]
