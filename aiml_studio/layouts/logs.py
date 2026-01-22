@@ -90,14 +90,24 @@ def create_logs_layout() -> html.Div:
                                         leftSection=DashIconify(icon="tabler:search", width=20),
                                         style={"minWidth": 300},
                                     ),
-                                    dmc.DatePicker(
-                                        label="From Date",
-                                        id="log-from-date",
+                                    dmc.Stack(
+                                        [
+                                            dmc.Text("From Date", size="sm", fw=500),
+                                            dmc.DatePicker(
+                                                id="log-from-date",
+                                            ),
+                                        ],
+                                        gap="xs",
                                         style={"minWidth": 150},
                                     ),
-                                    dmc.DatePicker(
-                                        label="To Date",
-                                        id="log-to-date",
+                                    dmc.Stack(
+                                        [
+                                            dmc.Text("To Date", size="sm", fw=500),
+                                            dmc.DatePicker(
+                                                id="log-to-date",
+                                            ),
+                                        ],
+                                        gap="xs",
                                         style={"minWidth": 150},
                                     ),
                                 ],

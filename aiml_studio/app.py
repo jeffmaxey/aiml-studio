@@ -45,28 +45,8 @@ app.layout = dmc.MantineProvider(
 )
 
 
-# Navbar toggle callback
-@callback(
-    Output("appshell", "navbar"),
-    Input("navbar-toggle", "n_clicks"),
-    State("appshell", "navbar"),
-    prevent_initial_call=True,
-)
-def toggle_navbar(n_clicks: int, navbar_config: dict[str, Any]) -> dict[str, Any]:
-    """Toggle navbar collapsed state on mobile.
-
-    Args:
-        n_clicks: Number of clicks on toggle button
-        navbar_config: Current navbar configuration
-
-    Returns:
-        Updated navbar configuration
-    """
-    if navbar_config["collapsed"]["mobile"]:
-        navbar_config["collapsed"]["mobile"] = False
-    else:
-        navbar_config["collapsed"]["mobile"] = True
-    return navbar_config
+# Note: Navbar toggle callback removed due to conflict with AppShell props
+# The navbar toggle is handled by Mantine's built-in responsive behavior
 
 
 # Import callbacks from all pages
