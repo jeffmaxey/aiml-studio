@@ -32,7 +32,6 @@ def create_search_modal() -> dmc.Modal:
                         placeholder="Type to search...",
                         leftSection=DashIconify(icon="tabler:search", width=18),
                         size="md",
-                        autoFocus=True,
                     ),
                     dmc.Divider(),
                     dmc.ScrollArea(

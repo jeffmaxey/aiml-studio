@@ -1,5 +1,7 @@
 """Loading states and progress indicator components."""
 
+from typing import Any
+
 import dash_mantine_components as dmc
 from dash import html
 from dash_iconify import DashIconify
@@ -216,7 +218,7 @@ def create_step_progress(active_step: int, steps: list[str]) -> dmc.Stepper:
 
 
 def create_loading_state_wrapper(
-    children: list, is_loading: bool, skeleton_component: dmc.Component | None = None
+    children: list, is_loading: bool, skeleton_component: Any | None = None
 ) -> html.Div:
     """Wrap content with loading state.
 
