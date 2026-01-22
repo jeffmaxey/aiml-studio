@@ -11,6 +11,54 @@ A Python web platform for running predictive analytics and machine learning expe
 - **Github repository**: <https://github.com/jeffmaxey/aiml-studio/>
 - **Documentation** <https://jeffmaxey.github.io/aiml-studio/>
 
+## Features
+
+AIML Studio provides a comprehensive admin dashboard for managing ML projects and experiments:
+
+- **Analytics Dashboard**: Monitor key metrics, model performance, and experiment trends with interactive visualizations
+- **Data Sources Management**: Manage and monitor data connections with an interactive AG Grid table
+- **Projects Management**: Track ML projects, experiments, and their status with comprehensive project views
+
+### Technology Stack
+
+- **Dash**: Web application framework for building analytical web applications
+- **Dash Mantine Components**: Modern, feature-rich UI component library
+- **Dash AG Grid**: High-performance interactive data tables
+- **Plotly**: Interactive data visualizations and charts
+- **Pandas**: Data manipulation and analysis
+
+## Quick Start
+
+### Running the Admin Dashboard
+
+To run the AIML Studio admin dashboard:
+
+```bash
+python -m aiml_studio.app
+```
+
+The dashboard will be available at `http://localhost:8050`
+
+### Dashboard Pages
+
+1. **Analytics** (`/`): View key metrics and performance trends
+   - Total experiments count
+   - Active models tracking
+   - Model performance charts
+   - Experiment trend analysis
+
+2. **Data Sources** (`/data-sources`): Manage data connections
+   - View all connected data sources
+   - Monitor connection status
+   - Track data synchronization
+   - Interactive table with filtering and sorting
+
+3. **Projects** (`/projects`): Manage ML projects
+   - View all projects and their status
+   - Track experiments per project
+   - Monitor project accuracy
+   - Filter and search projects
+
 ## Getting started with your project
 
 ### 1. Create a New Repository
