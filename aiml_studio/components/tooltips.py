@@ -25,7 +25,7 @@ def create_tooltip(
         position: Tooltip position relative to element
         with_arrow: Show arrow pointing to element
         multiline: Allow multiline text
-        width: Tooltip width (None for auto)
+        width: Tooltip width (None for auto, maps to Mantine `w` prop)
         color: Tooltip background color
         transition_props: Transition animation properties
 
