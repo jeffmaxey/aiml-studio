@@ -1,0 +1,62 @@
+/* Custom styles for AIML Studio */
+
+/* Global styles */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Inter', sans-serif;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
+
+/* Card hover effects */
+.mantine-Card-root {
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+
+.mantine-Card-root:hover {
+    transform: translateY(-2px);
+}
+
+/* Navigation link active state */
+.mantine-NavLink-root[data-active="true"] {
+    background-color: var(--mantine-color-blue-light);
+    color: var(--mantine-color-blue-filled);
+}
+
+/* Responsive table container */
+.ag-theme-alpine {
+    width: 100%;
+    height: 500px;
+}
+
+/* Modal overlay */
+.mantine-Modal-overlay {
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+/* Print styles */
+@media print {
+    .mantine-AppShell-header,
+    .mantine-AppShell-navbar,
+    .mantine-AppShell-footer {
+        display: none !important;
+    }
+}
