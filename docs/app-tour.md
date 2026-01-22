@@ -28,7 +28,7 @@ Explore the main screens and user journeys in AIML Studio.
 
 ## Analytics
 
-![Analytics overview](assets/screenshots/analytics-overview.png)
+![Analytics overview](assets/screenshots/analytics-page.png)
 
 - Table-driven metrics
 - Trend indicators

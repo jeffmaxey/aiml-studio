@@ -6,7 +6,6 @@ site_author: Jeff Maxey
 edit_uri: edit/main/docs/
 repo_name: jeffmaxey/aiml-studio
 copyright: Maintained by <a href="https://jeffmaxey.com">jeffmaxey</a>.
-exclude_docs: README.md
 
 nav:
   - Overview: index.md
@@ -18,8 +17,10 @@ nav:
   - Feature Summary: FEATURE_IMPLEMENTATION_SUMMARY.md
   - Features Guide: FEATURES_DOCUMENTATION.md
   - Quick Reference: QUICK_REFERENCE.md
-  - Documentation Index: docs-index.md
+  - Documentation Index: README_INDEX.md
   - Modules: modules.md
+  - Docs Start Here: docs-index.md
+  - Screenshot Notes: assets/screenshots/README.md
 plugins:
   - search
   - mkdocstrings:

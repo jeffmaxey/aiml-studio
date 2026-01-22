@@ -1,18 +1,19 @@
-# AIML Studio Documentation
+# AIML Studio Documentation Index
 
-Welcome to the AIML Studio documentation! This directory contains comprehensive guides for using and extending the application.
+Welcome to the AIML Studio documentation! This directory contains comprehensive guides for using
+and extending the application.
 
 ## 📚 Documentation Index
 
 ### Getting Started
 
-- **[README.md](../README.md)** - Main project README with setup instructions
-- **[CONTRIBUTING.md](../CONTRIBUTING.md)** - Contribution guidelines
+- **[README.md](https://github.com/jeffmaxey/aiml-studio)** - Main project README with setup instructions
+- **[CONTRIBUTING.md](https://github.com/jeffmaxey/aiml-studio/blob/main/CONTRIBUTING.md)** - Contribution guidelines
 
 ### Architecture & Design
 
 - **[ARCHITECTURE.md](ARCHITECTURE.md)** - Application architecture overview
-- **[UI_UX_ENHANCEMENTS.md](../UI_UX_ENHANCEMENTS.md)** - UI/UX design documentation
+- **[UI_UX_ENHANCEMENTS.md](https://github.com/jeffmaxey/aiml-studio/blob/main/UI_UX_ENHANCEMENTS.md)** - UI/UX design documentation
 
 ### New Features Documentation
 
@@ -51,10 +52,10 @@ Welcome to the AIML Studio documentation! This directory contains comprehensive 
 → Read [ARCHITECTURE.md](ARCHITECTURE.md)
 
 **...see the UI/UX design philosophy**
-→ Read [UI_UX_ENHANCEMENTS.md](../UI_UX_ENHANCEMENTS.md)
+→ Read [UI_UX_ENHANCEMENTS.md](https://github.com/jeffmaxey/aiml-studio/blob/main/UI_UX_ENHANCEMENTS.md)
 
 **...contribute to the project**
-→ Read [CONTRIBUTING.md](../CONTRIBUTING.md)
+→ Read [CONTRIBUTING.md](https://github.com/jeffmaxey/aiml-studio/blob/main/CONTRIBUTING.md)
 
 ## 🔍 Quick Links
 
@@ -165,7 +166,7 @@ Recent changes:
 
 To contribute to documentation:
 
-1. Follow the style guide in [CONTRIBUTING.md](../CONTRIBUTING.md)
+1. Follow the style guide in [CONTRIBUTING.md](https://github.com/jeffmaxey/aiml-studio/blob/main/CONTRIBUTING.md)
 2. Use clear, concise language
 3. Include code examples
 4. Test all code snippets

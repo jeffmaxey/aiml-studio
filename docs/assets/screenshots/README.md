@@ -1,7 +1,7 @@
 # Screenshots
 
-PNG placeholders are committed so the documentation builds immediately. Replace them with real
-screenshots when you capture the UI.
+PNG placeholder images are committed so the documentation builds immediately. Replace them with real
+UI captures when you have the application running locally.
 
 ## Required files
 
@@ -10,7 +10,7 @@ screenshots when you capture the UI.
 - `home-dashboard.png`
 - `projects-workspace.png`
 - `data-sources.png`
-- `analytics-overview.png`
+- `analytics-page.png`
 - `settings.png`
 - `logs.png`
 - `help-center.png`
