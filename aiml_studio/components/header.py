@@ -13,10 +13,11 @@ def create_navbar_toggle() -> dmc.ActionIcon:
         Mantine ActionIcon component for toggling navbar
     """
     return dmc.ActionIcon(
-        DashIconify(icon="tabler:menu-2", width=20),
+        DashIconify(icon="tabler:menu-2", width=22),
         variant="subtle",
         id="navbar-toggle-btn",
         size="lg",
+        color="gray",
     )
 
 
@@ -27,10 +28,38 @@ def create_aside_toggle() -> dmc.ActionIcon:
         Mantine ActionIcon component for toggling aside
     """
     return dmc.ActionIcon(
-        DashIconify(icon="tabler:layout-sidebar-right", width=20),
+        DashIconify(icon="tabler:layout-sidebar-right", width=22),
         variant="subtle",
         id="aside-toggle-btn",
         size="lg",
+        color="gray",
+    )
+
+
+def create_logo_section() -> dmc.Group:
+    """Create logo section with icon and title.
+
+    Returns:
+        Group containing logo and title
+    """
+    return dmc.Group(
+        [
+            dmc.ThemeIcon(
+                DashIconify(icon="tabler:brain", width=28),
+                size="lg",
+                radius="md",
+                variant="gradient",
+                gradient={"from": "blue", "to": "cyan", "deg": 135},
+            ),
+            dmc.Stack(
+                [
+                    dmc.Title(APP_TITLE, order=3, style={"lineHeight": "1.2", "marginBottom": "0"}),
+                    dmc.Text("ML Platform", size="xs", c="dimmed", fw=500),
+                ],
+                gap=0,
+            ),
+        ],
+        gap="sm",
     )
 
 
@@ -43,25 +72,63 @@ def create_header() -> dmc.AppShellHeader:
     return dmc.AppShellHeader(
         dmc.Group(
             [
-                # Left section with navbar toggle and title
+                # Left section with navbar toggle and logo
                 dmc.Group(
                     [
                         create_navbar_toggle(),
-                        dmc.Title(APP_TITLE, order=3),
+                        create_logo_section(),
                     ],
                     gap="md",
                 ),
-                # Right section with aside toggle and user menu
+                # Right section with notifications, search, and user menu
                 dmc.Group(
                     [
+                        # Search button
+                        dmc.ActionIcon(
+                            DashIconify(icon="tabler:search", width=20),
+                            variant="subtle",
+                            size="lg",
+                            color="gray",
+                        ),
+                        # Notifications
+                        dmc.Indicator(
+                            dmc.ActionIcon(
+                                DashIconify(icon="tabler:bell", width=20),
+                                variant="subtle",
+                                size="lg",
+                                color="gray",
+                            ),
+                            color="red",
+                            size=8,
+                            processing=True,
+                        ),
+                        dmc.Divider(orientation="vertical", style={"height": "24px"}),
+                        # Aside toggle
                         create_aside_toggle(),
+                        # User menu
                         dmc.Menu(
                             [
                                 dmc.MenuTarget(
-                                    dmc.ActionIcon(
-                                        DashIconify(icon="tabler:user", width=20),
-                                        variant="subtle",
-                                        size="lg",
+                                    dmc.Group(
+                                        [
+                                            dmc.Avatar(
+                                                DashIconify(icon="tabler:user", width=20),
+                                                radius="xl",
+                                                color="blue",
+                                                variant="light",
+                                            ),
+                                            dmc.Stack(
+                                                [
+                                                    dmc.Text("Admin User", size="sm", fw=600),
+                                                    dmc.Text("admin@aiml.studio", size="xs", c="dimmed"),
+                                                ],
+                                                gap=0,
+                                                className="hide-mobile",
+                                            ),
+                                            DashIconify(icon="tabler:chevron-down", width=16, color="gray"),
+                                        ],
+                                        gap="sm",
+                                        style={"cursor": "pointer"},
                                     )
                                 ),
                                 dmc.MenuDropdown([
@@ -75,6 +142,16 @@ def create_header() -> dmc.AppShellHeader:
                                     ),
                                     dmc.MenuDivider(),
                                     dmc.MenuItem(
+                                        "Documentation",
+                                        leftSection=DashIconify(icon="tabler:book", width=16),
+                                    ),
+                                    dmc.MenuItem(
+                                        "Keyboard Shortcuts",
+                                        leftSection=DashIconify(icon="tabler:keyboard", width=16),
+                                        rightSection=dmc.Text("Ctrl+K", size="xs", c="dimmed"),
+                                    ),
+                                    dmc.MenuDivider(),
+                                    dmc.MenuItem(
                                         "Logout",
                                         leftSection=DashIconify(icon="tabler:logout", width=16),
                                         color="red",
@@ -82,7 +159,7 @@ def create_header() -> dmc.AppShellHeader:
                                 ]),
                             ],
                             position="bottom-end",
-                            width=200,
+                            width=240,
                         ),
                     ],
                     gap="sm",
@@ -90,7 +167,7 @@ def create_header() -> dmc.AppShellHeader:
             ],
             justify="space-between",
             h="100%",
-            px="md",
+            px="lg",
         ),
         id="header",
     )

@@ -7,24 +7,27 @@ APP_TITLE = "AIML Studio"
 APP_VERSION = "0.0.1"
 APP_DESCRIPTION = "A Python web platform for running predictive analytics and machine learning experiments"
 
-# Color Scheme
+# Color Scheme - Inspired by MLflow's professional palette
 COLORS: dict[str, str] = {
-    "primary": "#339af0",
-    "secondary": "#748ffc",
-    "success": "#51cf66",
-    "warning": "#ffd43b",
-    "error": "#ff6b6b",
-    "info": "#4dabf7",
-    "dark": "#1a1b1e",
-    "light": "#f8f9fa",
+    "primary": "#0194E2",  # MLflow blue
+    "secondary": "#43C9ED",  # Light blue accent
+    "success": "#00B388",  # Professional green
+    "warning": "#FFB240",  # Amber warning
+    "error": "#FF5252",  # Clear error red
+    "info": "#2196F3",  # Information blue
+    "dark": "#1E1E1E",  # Deep dark
+    "light": "#F5F7FA",  # Soft light background
+    "gray": "#6C757D",  # Neutral gray
+    "purple": "#7B61FF",  # Accent purple
+    "teal": "#14B8A6",  # Modern teal
 }
 
-# Layout Sizes
-HEADER_HEIGHT = 60
-NAVBAR_WIDTH = 250
+# Layout Sizes - Optimized for professional ML platform
+HEADER_HEIGHT = 64  # Slightly taller for better presence
+NAVBAR_WIDTH = 260  # Wider for better readability
 NAVBAR_WIDTH_COLLAPSED = 80
-FOOTER_HEIGHT = 50
-ASIDE_WIDTH = 300
+FOOTER_HEIGHT = 48  # Balanced footer height
+ASIDE_WIDTH = 320  # More space for contextual info
 
 # Breakpoints (Mantine defaults)
 BREAKPOINTS: dict[str, str] = {

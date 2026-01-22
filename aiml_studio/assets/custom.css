@@ -1,7 +1,60 @@
 /* ===================================================================
    AIML Studio - Professional Stylesheet
-   Modern, consistent styling for the entire application
+   Modern ML Platform Design inspired by MLflow
    =================================================================== */
+
+/* ===================================================================
+   CSS Variables & Design Tokens
+   =================================================================== */
+
+:root {
+    /* Primary Colors */
+    --color-primary: #0194E2;
+    --color-primary-hover: #0178B8;
+    --color-primary-light: #E6F7FF;
+    
+    /* Semantic Colors */
+    --color-success: #00B388;
+    --color-warning: #FFB240;
+    --color-error: #FF5252;
+    --color-info: #2196F3;
+    
+    /* Neutral Colors */
+    --color-gray-50: #F9FAFB;
+    --color-gray-100: #F3F4F6;
+    --color-gray-200: #E5E7EB;
+    --color-gray-300: #D1D5DB;
+    --color-gray-400: #9CA3AF;
+    --color-gray-500: #6B7280;
+    --color-gray-600: #4B5563;
+    --color-gray-700: #374151;
+    --color-gray-800: #1F2937;
+    --color-gray-900: #111827;
+    
+    /* Spacing System */
+    --spacing-xs: 0.5rem;
+    --spacing-sm: 0.75rem;
+    --spacing-md: 1rem;
+    --spacing-lg: 1.5rem;
+    --spacing-xl: 2rem;
+    --spacing-2xl: 3rem;
+    
+    /* Border Radius */
+    --radius-sm: 0.375rem;
+    --radius-md: 0.5rem;
+    --radius-lg: 0.75rem;
+    --radius-xl: 1rem;
+    
+    /* Shadows */
+    --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.05), 0 1px 2px rgba(0, 0, 0, 0.1);
+    --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.05), 0 10px 20px rgba(0, 0, 0, 0.1);
+    --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.05), 0 20px 40px rgba(0, 0, 0, 0.1);
+    
+    /* Transitions */
+    --transition-fast: 150ms ease;
+    --transition-base: 250ms ease;
+    --transition-slow: 350ms ease;
+}
 
 /* ===================================================================
    Global Styles & Reset
@@ -19,39 +72,50 @@ body {
                  'Helvetica Neue', sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    background-color: var(--color-gray-50);
+    color: var(--color-gray-900);
+    font-size: 14px;
+    line-height: 1.5;
 }
 
 /* ===================================================================
-   Custom Scrollbar
+   Professional Scrollbar
    =================================================================== */
 
 ::-webkit-scrollbar {
-    width: 10px;
-    height: 10px;
+    width: 12px;
+    height: 12px;
 }
 
 ::-webkit-scrollbar-track {
-    background: var(--mantine-color-gray-0);
-    border-radius: 5px;
+    background: var(--color-gray-100);
+    border-radius: var(--radius-md);
 }
 
 ::-webkit-scrollbar-thumb {
-    background: var(--mantine-color-gray-4);
-    border-radius: 5px;
-    transition: background 0.2s ease;
+    background: var(--color-gray-300);
+    border-radius: var(--radius-md);
+    border: 2px solid var(--color-gray-100);
+    transition: background var(--transition-fast);
 }
 
 ::-webkit-scrollbar-thumb:hover {
-    background: var(--mantine-color-gray-5);
+    background: var(--color-gray-400);
 }
 
 /* Dark mode scrollbar */
+[data-mantine-color-scheme="dark"] {
+    --color-gray-50: #1F2937;
+    --color-gray-100: #374151;
+}
+
 [data-mantine-color-scheme="dark"] ::-webkit-scrollbar-track {
     background: var(--mantine-color-dark-7);
 }
 
 [data-mantine-color-scheme="dark"] ::-webkit-scrollbar-thumb {
     background: var(--mantine-color-dark-5);
+    border-color: var(--mantine-color-dark-7);
 }
 
 [data-mantine-color-scheme="dark"] ::-webkit-scrollbar-thumb:hover {
@@ -59,55 +123,98 @@ body {
 }
 
 /* ===================================================================
-   Card Enhancements
+   Card Enhancements - MLflow-inspired cards
    =================================================================== */
 
 .mantine-Card-root {
-    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+    transition: transform var(--transition-base), box-shadow var(--transition-base);
+    background: white;
+    border: 1px solid var(--color-gray-200);
 }
 
 .mantine-Card-root:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-lg);
+    border-color: var(--color-primary);
+}
+
+[data-mantine-color-scheme="dark"] .mantine-Card-root {
+    background: var(--mantine-color-dark-6);
+    border-color: var(--mantine-color-dark-5);
 }
 
 [data-mantine-color-scheme="dark"] .mantine-Card-root:hover {
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 20px 25px rgba(0, 0, 0, 0.3);
+    border-color: var(--color-primary);
+}
+
+/* Metric Cards - Dashboard style */
+.metric-card {
+    background: linear-gradient(135deg, var(--color-primary-light) 0%, white 100%);
+    border-left: 4px solid var(--color-primary);
+}
+
+.metric-card:hover {
+    border-left-width: 6px;
 }
 
 /* ===================================================================
-   Navigation Active State
+   Navigation Enhancements
    =================================================================== */
 
+.mantine-NavLink-root {
+    transition: all var(--transition-fast);
+    border-radius: var(--radius-md);
+    margin-bottom: 0.25rem;
+    font-weight: 500;
+}
+
+.mantine-NavLink-root:hover {
+    background-color: var(--color-gray-100);
+    padding-left: 1.2rem;
+}
+
 .mantine-NavLink-root[data-active="true"] {
-    background-color: var(--mantine-color-blue-light);
-    color: var(--mantine-color-blue-filled);
+    background: linear-gradient(90deg, var(--color-primary) 0%, var(--color-primary-hover) 100%);
+    color: white;
     font-weight: 600;
+    box-shadow: var(--shadow-sm);
+}
+
+.mantine-NavLink-root[data-active="true"] svg {
+    color: white !important;
+}
+
+[data-mantine-color-scheme="dark"] .mantine-NavLink-root:hover {
+    background-color: var(--mantine-color-dark-5);
 }
 
 [data-mantine-color-scheme="dark"] .mantine-NavLink-root[data-active="true"] {
-    background-color: var(--mantine-color-blue-9);
-    color: var(--mantine-color-blue-3);
-}
-
-.mantine-NavLink-root {
-    transition: background-color 0.15s ease;
+    background: linear-gradient(90deg, var(--color-primary) 0%, var(--color-primary-hover) 100%);
 }
 
 /* ===================================================================
-   Button Enhancements
+   Button Enhancements - Professional interactions
    =================================================================== */
 
 .mantine-Button-root {
-    transition: all 0.2s ease-in-out;
+    transition: all var(--transition-base);
+    font-weight: 600;
+    letter-spacing: 0.025em;
 }
 
 .mantine-Button-root:hover:not(:disabled) {
-    transform: translateY(-1px);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
 }
 
 .mantine-Button-root:active:not(:disabled) {
     transform: translateY(0);
+    box-shadow: var(--shadow-sm);
+}
+
+.mantine-Button-root[data-variant="filled"] {
+    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-hover) 100%);
 }
 
 /* ===================================================================
@@ -115,11 +222,12 @@ body {
    =================================================================== */
 
 .mantine-ActionIcon-root {
-    transition: all 0.2s ease-in-out;
+    transition: all var(--transition-base);
 }
 
 .mantine-ActionIcon-root:hover:not(:disabled) {
-    transform: scale(1.1);
+    transform: scale(1.15);
+    box-shadow: var(--shadow-sm);
 }
 
 .mantine-ActionIcon-root:active:not(:disabled) {
@@ -127,35 +235,95 @@ body {
 }
 
 /* ===================================================================
-   AG Grid Table Styling
+   Header Enhancements
+   =================================================================== */
+
+.mantine-AppShell-header {
+    background: white;
+    border-bottom: 1px solid var(--color-gray-200);
+    box-shadow: var(--shadow-sm);
+    backdrop-filter: blur(10px);
+    background: rgba(255, 255, 255, 0.95);
+}
+
+[data-mantine-color-scheme="dark"] .mantine-AppShell-header {
+    background: rgba(30, 41, 59, 0.95);
+    border-bottom-color: var(--mantine-color-dark-5);
+}
+
+/* ===================================================================
+   AG Grid Table Styling - Professional data tables
    =================================================================== */
 
 .ag-theme-alpine {
     width: 100%;
     height: 500px;
     --ag-font-family: 'Inter', sans-serif;
-    --ag-border-radius: 8px;
+    --ag-font-size: 14px;
+    --ag-border-radius: var(--radius-lg);
+    --ag-row-hover-color: var(--color-gray-50);
+    --ag-header-background-color: var(--color-gray-100);
+    --ag-odd-row-background-color: white;
+    --ag-border-color: var(--color-gray-200);
 }
 
 .ag-theme-alpine .ag-header {
     font-weight: 600;
-    background-color: var(--mantine-color-gray-0);
+    text-transform: uppercase;
+    font-size: 12px;
+    letter-spacing: 0.05em;
+    color: var(--color-gray-700);
 }
 
-[data-mantine-color-scheme="dark"] .ag-theme-alpine .ag-header {
-    background-color: var(--mantine-color-dark-6);
+.ag-theme-alpine .ag-header-cell {
+    padding: 1rem 0.75rem;
 }
 
 .ag-theme-alpine .ag-row {
-    transition: background-color 0.15s ease;
+    transition: background-color var(--transition-fast);
+    border-bottom: 1px solid var(--color-gray-100);
 }
 
 .ag-theme-alpine .ag-row:hover {
-    background-color: var(--mantine-color-gray-0);
+    background-color: var(--color-primary-light);
 }
 
-[data-mantine-color-scheme="dark"] .ag-theme-alpine .ag-row:hover {
-    background-color: var(--mantine-color-dark-6);
+.ag-theme-alpine .ag-cell {
+    padding: 0.75rem;
+}
+
+[data-mantine-color-scheme="dark"] .ag-theme-alpine {
+    --ag-background-color: var(--mantine-color-dark-7);
+    --ag-header-background-color: var(--mantine-color-dark-6);
+    --ag-odd-row-background-color: var(--mantine-color-dark-7);
+    --ag-row-hover-color: var(--mantine-color-dark-6);
+    --ag-border-color: var(--mantine-color-dark-5);
+}
+
+/* ===================================================================
+   Badge Styling - Status indicators
+   =================================================================== */
+
+.mantine-Badge-root {
+    font-weight: 600;
+    letter-spacing: 0.025em;
+    text-transform: uppercase;
+    font-size: 11px;
+}
+
+.status-badge-success {
+    background: var(--color-success);
+    color: white;
+}
+
+.status-badge-warning {
+    background: var(--color-warning);
+    color: white;
+}
+
+.status-badge-error {
+    background: var(--color-error);
+    color: white;
 }
 
 /* ===================================================================
@@ -163,79 +331,60 @@ body {
    =================================================================== */
 
 .mantine-Paper-root {
-    transition: box-shadow 0.2s ease;
+    transition: box-shadow var(--transition-base);
+    background: white;
+}
+
+[data-mantine-color-scheme="dark"] .mantine-Paper-root {
+    background: var(--mantine-color-dark-6);
 }
 
 /* ===================================================================
-   Modal Overlay
+   Modal Enhancements
    =================================================================== */
 
 .mantine-Modal-overlay {
-    background-color: rgba(0, 0, 0, 0.55);
-    backdrop-filter: blur(4px);
+    background-color: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(8px);
+}
+
+.mantine-Modal-content {
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-lg);
 }
 
 /* ===================================================================
-   Badge Styling
-   =================================================================== */
-
-.mantine-Badge-root {
-    font-weight: 600;
-    letter-spacing: 0.3px;
-}
-
-/* ===================================================================
-   Switch Enhancements
-   =================================================================== */
-
-.mantine-Switch-root {
-    transition: all 0.2s ease;
-}
-
-/* ===================================================================
-   Segmented Control Enhancements
-   =================================================================== */
-
-.mantine-SegmentedControl-root {
-    border-radius: 8px;
-}
-
-/* ===================================================================
-   Divider Styling
-   =================================================================== */
-
-.mantine-Divider-root {
-    opacity: 0.5;
-}
-
-/* ===================================================================
-   Focus States
-   =================================================================== */
-
-*:focus-visible {
-    outline: 2px solid var(--mantine-color-blue-5);
-    outline-offset: 2px;
-}
-
-/* ===================================================================
-   Loading States
+   Loading States & Skeletons
    =================================================================== */
 
 .loading-spinner {
     display: flex;
     justify-content: center;
     align-items: center;
-    min-height: 200px;
+    min-height: 300px;
+}
+
+.skeleton-loader {
+    animation: pulse 1.5s ease-in-out infinite;
+}
+
+@keyframes pulse {
+    0%, 100% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.5;
+    }
 }
 
 /* ===================================================================
-   Animations
+   Animations - Smooth & Professional
    =================================================================== */
 
 @keyframes fadeIn {
     from {
         opacity: 0;
-        transform: translateY(10px);
+        transform: translateY(20px);
     }
     to {
         opacity: 1;
@@ -244,13 +393,13 @@ body {
 }
 
 .fade-in {
-    animation: fadeIn 0.3s ease-out;
+    animation: fadeIn 0.4s ease-out;
 }
 
 @keyframes slideIn {
     from {
         opacity: 0;
-        transform: translateX(-20px);
+        transform: translateX(-30px);
     }
     to {
         opacity: 1;
@@ -259,7 +408,32 @@ body {
 }
 
 .slide-in {
-    animation: slideIn 0.3s ease-out;
+    animation: slideIn 0.4s ease-out;
+}
+
+@keyframes scaleIn {
+    from {
+        opacity: 0;
+        transform: scale(0.95);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.scale-in {
+    animation: scaleIn 0.3s ease-out;
+}
+
+/* ===================================================================
+   Focus States - Accessibility
+   =================================================================== */
+
+*:focus-visible {
+    outline: 2px solid var(--color-primary);
+    outline-offset: 2px;
+    border-radius: var(--radius-sm);
 }
 
 /* ===================================================================
@@ -280,6 +454,55 @@ body {
     user-select: none;
 }
 
+.gradient-text {
+    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-hover) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+/* ===================================================================
+   Status Indicators
+   =================================================================== */
+
+.status-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    display: inline-block;
+    margin-right: 0.5rem;
+}
+
+.status-dot.success {
+    background: var(--color-success);
+    box-shadow: 0 0 0 3px rgba(0, 179, 136, 0.2);
+}
+
+.status-dot.warning {
+    background: var(--color-warning);
+    box-shadow: 0 0 0 3px rgba(255, 178, 64, 0.2);
+}
+
+.status-dot.error {
+    background: var(--color-error);
+    box-shadow: 0 0 0 3px rgba(255, 82, 82, 0.2);
+}
+
+.status-dot.pulse {
+    animation: pulse-dot 2s ease-in-out infinite;
+}
+
+@keyframes pulse-dot {
+    0%, 100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+    50% {
+        transform: scale(1.2);
+        opacity: 0.8;
+    }
+}
+
 /* ===================================================================
    Responsive Design Utilities
    =================================================================== */
@@ -287,6 +510,10 @@ body {
 @media (max-width: 768px) {
     .hide-mobile {
         display: none !important;
+    }
+    
+    body {
+        font-size: 14px;
     }
 }
 
@@ -334,4 +561,9 @@ body {
 [dir="rtl"] .mantine-NavLink-leftSection {
     margin-right: 0;
     margin-left: var(--mantine-spacing-sm);
+}
+
+[dir="rtl"] .status-dot {
+    margin-right: 0;
+    margin-left: 0.5rem;
 }

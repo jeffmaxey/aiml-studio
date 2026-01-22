@@ -25,40 +25,58 @@ def create_nav_link(label: str, icon: str, href: str) -> dmc.NavLink:
         leftSection=DashIconify(icon=icon, width=20),
         variant="subtle",
         active="exact",
+        style={"borderRadius": "8px"},
     )
 
 
-def create_theme_toggle() -> dmc.Group:
-    """Create theme toggle switch.
+def create_theme_toggle() -> dmc.Paper:
+    """Create theme toggle switch with better styling.
 
     Returns:
-        Group containing theme toggle
+        Paper containing theme toggle
     """
-    return dmc.Group(
-        [
-            DashIconify(icon="tabler:sun", width=18),
-            dmc.Switch(id="theme-switch", checked=False, size="md"),
-            DashIconify(icon="tabler:moon", width=18),
-        ],
-        gap="xs",
-        justify="center",
+    return dmc.Paper(
+        dmc.Group(
+            [
+                DashIconify(icon="tabler:sun", width=18, color="orange"),
+                dmc.Switch(
+                    id="theme-switch",
+                    checked=False,
+                    size="md",
+                    color="blue",
+                    onLabel=DashIconify(icon="tabler:moon", width=16),
+                    offLabel=DashIconify(icon="tabler:sun", width=16),
+                ),
+                DashIconify(icon="tabler:moon", width=18, color="blue"),
+            ],
+            gap="xs",
+            justify="center",
+        ),
+        p="sm",
+        radius="md",
+        withBorder=True,
     )
 
 
-def create_rtl_toggle() -> dmc.Group:
-    """Create RTL toggle switch.
+def create_rtl_toggle() -> dmc.Paper:
+    """Create RTL toggle switch with better styling.
 
     Returns:
-        Group containing RTL toggle
+        Paper containing RTL toggle
     """
-    return dmc.Group(
-        [
-            dmc.Text("LTR", size="sm", fw=500),
-            dmc.Switch(id="rtl-switch", checked=False, size="md"),
-            dmc.Text("RTL", size="sm", fw=500),
-        ],
-        gap="xs",
-        justify="center",
+    return dmc.Paper(
+        dmc.Group(
+            [
+                dmc.Text("LTR", size="sm", fw=600, c="dimmed"),
+                dmc.Switch(id="rtl-switch", checked=False, size="md", color="blue"),
+                dmc.Text("RTL", size="sm", fw=600, c="dimmed"),
+            ],
+            gap="xs",
+            justify="center",
+        ),
+        p="sm",
+        radius="md",
+        withBorder=True,
     )
 
 
@@ -76,54 +94,108 @@ def create_navbar(opened: bool = True) -> dmc.AppShellNavbar:
     admin_links = [link for link in NAV_LINKS if link["section"] == "admin"]
 
     navbar_content: list[Any] = [
-        dmc.Stack(
-            [
-                # Core Section
-                dmc.Text("Core", size="xs", c="dimmed", fw=500, ml="xs", mb="xs"),
-                *[create_nav_link(link["label"], link["icon"], link["href"]) for link in core_links],
-                dmc.Divider(my="sm"),
-                # Admin Section
-                dmc.Text("Admin", size="xs", c="dimmed", fw=500, ml="xs", mb="xs"),
-                *[create_nav_link(link["label"], link["icon"], link["href"]) for link in admin_links],
-                dmc.Divider(my="sm"),
-                # Theme Controls
-                dmc.Stack(
-                    [
-                        dmc.Text("Appearance", size="xs", c="dimmed", fw=500, ml="xs", mb="xs"),
-                        dmc.Paper(
-                            [
+        dmc.ScrollArea(
+            dmc.Stack(
+                [
+                    # Core Section
+                    dmc.Stack(
+                        [
+                            dmc.Group(
+                                [
+                                    dmc.ThemeIcon(
+                                        DashIconify(icon="tabler:layout-dashboard", width=16),
+                                        size="sm",
+                                        radius="sm",
+                                        variant="light",
+                                        color="blue",
+                                    ),
+                                    dmc.Text("Core", size="xs", c="dimmed", fw=700, tt="uppercase"),
+                                ],
+                                gap="xs",
+                            ),
+                            *[create_nav_link(link["label"], link["icon"], link["href"]) for link in core_links],
+                        ],
+                        gap="xs",
+                    ),
+                    dmc.Divider(variant="dashed"),
+                    # Admin Section
+                    dmc.Stack(
+                        [
+                            dmc.Group(
+                                [
+                                    dmc.ThemeIcon(
+                                        DashIconify(icon="tabler:shield-check", width=16),
+                                        size="sm",
+                                        radius="sm",
+                                        variant="light",
+                                        color="grape",
+                                    ),
+                                    dmc.Text("Admin", size="xs", c="dimmed", fw=700, tt="uppercase"),
+                                ],
+                                gap="xs",
+                            ),
+                            *[create_nav_link(link["label"], link["icon"], link["href"]) for link in admin_links],
+                        ],
+                        gap="xs",
+                    ),
+                    dmc.Divider(variant="dashed"),
+                    # Appearance Section
+                    dmc.Stack(
+                        [
+                            dmc.Group(
+                                [
+                                    dmc.ThemeIcon(
+                                        DashIconify(icon="tabler:palette", width=16),
+                                        size="sm",
+                                        radius="sm",
+                                        variant="light",
+                                        color="pink",
+                                    ),
+                                    dmc.Text("Appearance", size="xs", c="dimmed", fw=700, tt="uppercase"),
+                                ],
+                                gap="xs",
+                            ),
+                            create_theme_toggle(),
+                            create_rtl_toggle(),
+                        ],
+                        gap="sm",
+                    ),
+                    # Footer info
+                    dmc.Stack(
+                        [
+                            dmc.Divider(variant="dashed"),
+                            dmc.Paper(
                                 dmc.Stack(
                                     [
-                                        dmc.Text("Theme", size="sm", fw=500, ta="center"),
-                                        create_theme_toggle(),
+                                        dmc.Group(
+                                            [
+                                                DashIconify(icon="tabler:info-circle", width=16, color="gray"),
+                                                dmc.Text("Quick Tips", size="xs", fw=600),
+                                            ],
+                                            gap="xs",
+                                        ),
+                                        dmc.Text(
+                                            "Press Ctrl+K for shortcuts",
+                                            size="xs",
+                                            c="dimmed",
+                                        ),
                                     ],
                                     gap="xs",
-                                )
-                            ],
-                            p="sm",
-                            radius="md",
-                            withBorder=True,
-                        ),
-                        dmc.Paper(
-                            [
-                                dmc.Stack(
-                                    [
-                                        dmc.Text("Direction", size="sm", fw=500, ta="center"),
-                                        create_rtl_toggle(),
-                                    ],
-                                    gap="xs",
-                                )
-                            ],
-                            p="sm",
-                            radius="md",
-                            withBorder=True,
-                        ),
-                    ],
-                    gap="sm",
-                ),
-            ],
-            gap="xs",
-            p="md",
+                                ),
+                                p="sm",
+                                radius="md",
+                                withBorder=True,
+                                style={"background": "var(--mantine-color-blue-light)"},
+                            ),
+                        ],
+                        gap="sm",
+                    ),
+                ],
+                gap="lg",
+                p="md",
+            ),
+            offsetScrollbars=True,
+            type="auto",
         )
     ]
 
