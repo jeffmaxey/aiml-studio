@@ -18,8 +18,8 @@ nav:
   - Features Guide: FEATURES_DOCUMENTATION.md
   - Quick Reference: QUICK_REFERENCE.md
   - Documentation Index: README_INDEX.md
+  - Getting Oriented: docs-index.md
   - Modules: modules.md
-  - Docs Start Here: docs-index.md
   - Screenshot Notes: assets/screenshots/README.md
 plugins:
   - search

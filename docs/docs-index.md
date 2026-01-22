@@ -1,6 +1,7 @@
 # Documentation Index
 
-This page mirrors the documentation index to provide a stable MkDocs entry.
+Use this page to orient yourself quickly before diving into the full documentation index and
+detailed guides.
 
 ## Getting Started
 
@@ -18,4 +19,5 @@ This page mirrors the documentation index to provide a stable MkDocs entry.
 
 ## Additional References
 
+- The full documentation index lives in [README_INDEX.md](README_INDEX.md).
 - Project README and UX notes are available in the repository root.
