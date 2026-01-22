@@ -34,24 +34,22 @@ def create_header() -> dmc.AppShellHeader:
                                 size="lg",
                             )
                         ),
-                        dmc.MenuDropdown(
-                            [
-                                dmc.MenuItem(
-                                    "Profile",
-                                    leftSection=DashIconify(icon="tabler:user", width=16),
-                                ),
-                                dmc.MenuItem(
-                                    "Settings",
-                                    leftSection=DashIconify(icon="tabler:settings", width=16),
-                                ),
-                                dmc.MenuDivider(),
-                                dmc.MenuItem(
-                                    "Logout",
-                                    leftSection=DashIconify(icon="tabler:logout", width=16),
-                                    color="red",
-                                ),
-                            ]
-                        ),
+                        dmc.MenuDropdown([
+                            dmc.MenuItem(
+                                "Profile",
+                                leftSection=DashIconify(icon="tabler:user", width=16),
+                            ),
+                            dmc.MenuItem(
+                                "Settings",
+                                leftSection=DashIconify(icon="tabler:settings", width=16),
+                            ),
+                            dmc.MenuDivider(),
+                            dmc.MenuItem(
+                                "Logout",
+                                leftSection=DashIconify(icon="tabler:logout", width=16),
+                                color="red",
+                            ),
+                        ]),
                     ],
                     position="bottom-end",
                     width=200,

@@ -12,13 +12,13 @@ from aiml_studio.components.tables import (
 )
 
 __all__ = [
+    "create_ag_grid",
+    "create_aside",
+    "create_data_sources_grid",
+    "create_footer",
+    "create_header",
+    "create_logs_grid",
     "create_navbar",
     "create_navbar_toggle",
-    "create_header",
-    "create_footer",
-    "create_aside",
-    "create_ag_grid",
-    "create_logs_grid",
-    "create_data_sources_grid",
     "create_projects_grid",
 ]

@@ -1,7 +1,6 @@
 """Application aside panel component."""
 
 import dash_mantine_components as dmc
-from dash import html
 
 
 def create_aside() -> dmc.AppShellAside:

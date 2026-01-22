@@ -1,7 +1,6 @@
 """Home page."""
 
 import dash
-from dash import html
 
 from aiml_studio.layouts.home import create_home_layout
 

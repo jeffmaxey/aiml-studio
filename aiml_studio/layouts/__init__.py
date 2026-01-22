@@ -10,12 +10,12 @@ from aiml_studio.layouts.projects import create_projects_layout
 from aiml_studio.layouts.settings_page import create_settings_layout
 
 __all__ = [
-    "create_appshell",
-    "create_home_layout",
-    "create_settings_layout",
-    "create_help_layout",
-    "create_logs_layout",
     "create_analytics_layout",
+    "create_appshell",
     "create_data_sources_layout",
+    "create_help_layout",
+    "create_home_layout",
+    "create_logs_layout",
     "create_projects_layout",
+    "create_settings_layout",
 ]

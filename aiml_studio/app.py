@@ -1,10 +1,7 @@
 """Main application entry point for AIML Studio."""
 
-from typing import Any
-
 import dash
 import dash_mantine_components as dmc
-from dash import Input, Output, State, callback, html
 
 from aiml_studio import settings
 from aiml_studio.components import create_aside, create_footer, create_header, create_navbar
@@ -52,7 +49,7 @@ app.layout = dmc.MantineProvider(
 # Import callbacks from all pages
 # This ensures all callbacks are registered
 try:
-    from aiml_studio.callbacks import (
+    from aiml_studio.callbacks import (  # noqa: F401
         analytics_callbacks,
         data_sources_callbacks,
         help_callbacks,

@@ -5,7 +5,7 @@ from typing import Any
 
 # Server Configuration
 DEBUG = os.getenv("DEBUG", "False").lower() == "true"
-HOST = os.getenv("HOST", "0.0.0.0")
+HOST = os.getenv("HOST", "0.0.0.0")  # noqa: S104
 PORT = int(os.getenv("PORT", "8050"))
 
 # Dash Configuration

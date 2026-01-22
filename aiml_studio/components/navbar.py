@@ -3,7 +3,6 @@
 from typing import Any
 
 import dash_mantine_components as dmc
-from dash import html
 from dash_iconify import DashIconify
 
 from aiml_studio.constants import NAV_LINKS

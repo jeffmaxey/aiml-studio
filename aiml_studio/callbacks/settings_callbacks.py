@@ -1,7 +1,5 @@
 """Settings page callbacks."""
 
-from typing import Any
-
 from dash import Input, Output, callback
 
 
