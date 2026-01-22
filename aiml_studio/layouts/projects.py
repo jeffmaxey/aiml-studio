@@ -1,7 +1,7 @@
 """Projects page layout."""
 
 import dash_mantine_components as dmc
-from dash import html
+from dash import dcc, html
 from dash_iconify import DashIconify
 
 from aiml_studio.components import (
@@ -204,6 +204,8 @@ def create_projects_layout() -> html.Div:
     projects_grid.rowData = sample_projects
 
     return html.Div([
+        # Hidden download component
+        dcc.Download(id="download-projects-data"),
         dmc.Stack(
             [
                 # Page header
@@ -300,10 +302,34 @@ def create_projects_layout() -> html.Div:
                                             variant="light",
                                             size="lg",
                                         ),
-                                        dmc.ActionIcon(
-                                            DashIconify(icon="tabler:download", width=18),
-                                            variant="light",
-                                            size="lg",
+                                        dmc.Menu(
+                                            [
+                                                dmc.MenuTarget(
+                                                    dmc.ActionIcon(
+                                                        DashIconify(icon="tabler:download", width=18),
+                                                        variant="light",
+                                                        size="lg",
+                                                    )
+                                                ),
+                                                dmc.MenuDropdown(
+                                                    [
+                                                        dmc.MenuItem(
+                                                            "Export as CSV",
+                                                            id="export-projects-csv",
+                                                            leftSection=DashIconify(
+                                                                icon="tabler:file-text", width=16
+                                                            ),
+                                                        ),
+                                                        dmc.MenuItem(
+                                                            "Export as JSON",
+                                                            id="export-projects-json",
+                                                            leftSection=DashIconify(
+                                                                icon="tabler:file-code", width=16
+                                                            ),
+                                                        ),
+                                                    ]
+                                                ),
+                                            ]
                                         ),
                                     ],
                                     gap="xs",
