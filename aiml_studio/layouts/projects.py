@@ -4,7 +4,16 @@ import dash_mantine_components as dmc
 from dash import html
 from dash_iconify import DashIconify
 
-from aiml_studio.components import create_projects_grid
+from aiml_studio.components import (
+    create_confirm_modal,
+    create_form_modal,
+    create_help_icon,
+    create_inline_alert,
+    create_label_with_help,
+    create_projects_grid,
+    create_tooltip,
+)
+from aiml_studio.constants_help import FIELD_HELP, TOOLTIPS
 from aiml_studio.settings import PROJECT_STATUSES
 
 
@@ -202,17 +211,26 @@ def create_projects_layout() -> html.Div:
                     [
                         dmc.Stack(
                             [
-                                dmc.Title("Projects", order=2),
+                                dmc.Group(
+                                    [
+                                        dmc.Title("Projects", order=2),
+                                        create_help_icon("Create and manage your machine learning projects"),
+                                    ],
+                                    gap="xs",
+                                ),
                                 dmc.Text("Manage your machine learning projects", c="dimmed", size="sm"),
                             ],
                             gap=4,
                         ),
-                        dmc.Button(
-                            "Create New Project",
-                            leftSection=DashIconify(icon="tabler:plus", width=18),
-                            id="create-project-button",
-                            variant="gradient",
-                            gradient={"from": "blue", "to": "cyan", "deg": 135},
+                        create_tooltip(
+                            dmc.Button(
+                                "Create New Project",
+                                leftSection=DashIconify(icon="tabler:plus", width=18),
+                                id="create-project-button",
+                                variant="gradient",
+                                gradient={"from": "blue", "to": "cyan", "deg": 135},
+                            ),
+                            label=TOOLTIPS.get("project_create", "Create a new machine learning project"),
                         ),
                     ],
                     justify="space-between",

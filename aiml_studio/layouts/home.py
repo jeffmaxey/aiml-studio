@@ -4,7 +4,8 @@ import dash_mantine_components as dmc
 from dash import html
 from dash_iconify import DashIconify
 
-from aiml_studio.components import create_ag_grid
+from aiml_studio.components import create_ag_grid, create_help_icon, create_tooltip
+from aiml_studio.constants_help import TOOLTIPS
 
 
 def create_metric_card(title: str, value: str, icon: str, color: str, trend: str | None = None) -> dmc.Card:
@@ -222,12 +223,17 @@ def create_home_layout() -> html.Div:
                                                         size="md",
                                                         variant="gradient",
                                                         gradient={"from": "blue", "to": "cyan", "deg": 135},
+                                                        id="home-get-started-btn",
                                                     ),
-                                                    dmc.Button(
-                                                        "View Documentation",
-                                                        leftSection=DashIconify(icon="tabler:book", width=16),
-                                                        size="md",
-                                                        variant="light",
+                                                    create_tooltip(
+                                                        dmc.Button(
+                                                            "View Documentation",
+                                                            leftSection=DashIconify(icon="tabler:book", width=16),
+                                                            size="md",
+                                                            variant="light",
+                                                            id="home-view-docs-btn",
+                                                        ),
+                                                        label="Access comprehensive documentation and tutorials",
                                                     ),
                                                 ],
                                                 gap="md",
@@ -265,7 +271,13 @@ def create_home_layout() -> html.Div:
                     [
                         dmc.Group(
                             [
-                                dmc.Title("Key Metrics", order=3),
+                                dmc.Group(
+                                    [
+                                        dmc.Title("Key Metrics", order=3),
+                                        create_help_icon("Monitor your project performance metrics in real-time"),
+                                    ],
+                                    gap="xs",
+                                ),
                                 dmc.Badge("Live", color="green", variant="dot", size="lg"),
                             ],
                             justify="space-between",
@@ -300,18 +312,32 @@ def create_home_layout() -> html.Div:
                     [
                         dmc.Group(
                             [
-                                dmc.Title("Recent Activity", order=3),
                                 dmc.Group(
                                     [
-                                        dmc.ActionIcon(
-                                            DashIconify(icon="tabler:refresh", width=18),
-                                            variant="light",
-                                            size="lg",
+                                        dmc.Title("Recent Activity", order=3),
+                                        create_help_icon("View recent actions and changes in your workspace"),
+                                    ],
+                                    gap="xs",
+                                ),
+                                dmc.Group(
+                                    [
+                                        create_tooltip(
+                                            dmc.ActionIcon(
+                                                DashIconify(icon="tabler:refresh", width=18),
+                                                variant="light",
+                                                size="lg",
+                                                id="refresh-activity-btn",
+                                            ),
+                                            label=TOOLTIPS.get("refresh", "Refresh data"),
                                         ),
-                                        dmc.ActionIcon(
-                                            DashIconify(icon="tabler:filter", width=18),
-                                            variant="light",
-                                            size="lg",
+                                        create_tooltip(
+                                            dmc.ActionIcon(
+                                                DashIconify(icon="tabler:filter", width=18),
+                                                variant="light",
+                                                size="lg",
+                                                id="filter-activity-btn",
+                                            ),
+                                            label=TOOLTIPS.get("filter", "Filter results"),
                                         ),
                                     ],
                                     gap="xs",

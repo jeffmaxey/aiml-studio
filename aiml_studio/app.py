@@ -2,22 +2,38 @@
 
 import dash
 import dash_mantine_components as dmc
-from dash import Input, Output, State, callback, clientside_callback
+from dash import Input, Output, State, callback, clientside_callback, dcc, html
 
 from aiml_studio import settings
-from aiml_studio.components import create_aside, create_footer, create_header, create_navbar
+from aiml_studio.components import (
+    create_aside,
+    create_footer,
+    create_header,
+    create_modal_manager,
+    create_navbar,
+    create_notification_manager,
+)
 from aiml_studio.constants import ASIDE_WIDTH, FOOTER_HEIGHT, HEADER_HEIGHT, NAVBAR_WIDTH
-from aiml_studio.managers import ApplicationManager, DataManager
+from aiml_studio.managers import (
+    ApplicationManager,
+    BrowserPersistenceManager,
+    DataManager,
+    LRUCacheManager,
+)
 from aiml_studio.managers.application_manager import DefaultApplicationManager
 from aiml_studio.managers.data_manager import InMemoryDataManager
 
 # Initialize managers
 app_manager: ApplicationManager = DefaultApplicationManager()
 data_manager: DataManager = InMemoryDataManager()
+persistence_manager = BrowserPersistenceManager()
+cache_manager = LRUCacheManager(max_size=100, default_ttl=3600)
 
 # Initialize managers
 app_manager.initialize()
 data_manager.initialize()
+persistence_manager.initialize()
+cache_manager.initialize()
 
 # Initialize Dash app with pages support
 app = dash.Dash(
@@ -32,24 +48,35 @@ app.title = "AIML Studio"
 
 # Define the main layout with AppShell
 app.layout = dmc.MantineProvider(
-    dmc.AppShell(
-        [
-            create_header(),
-            create_navbar(opened=True),
-            create_aside(),
-            dmc.AppShellMain(
-                dash.page_container,
-                id="main-content",
-            ),
-            create_footer(),
-        ],
-        header={"height": HEADER_HEIGHT},
-        navbar={"width": NAVBAR_WIDTH, "breakpoint": "sm", "collapsed": {"mobile": True, "desktop": False}},
-        aside={"width": ASIDE_WIDTH, "breakpoint": "md", "collapsed": {"desktop": True, "mobile": True}},
-        footer={"height": FOOTER_HEIGHT},
-        padding="md",
-        id="appshell",
-    ),
+    [
+        # Persistence stores for user preferences
+        dcc.Store(id="user-preferences", storage_type="local", data={}),
+        dcc.Store(id="session-data", storage_type="session", data={}),
+        # Modal and notification managers
+        create_modal_manager(),
+        create_notification_manager(),
+        # Notification provider for toast notifications
+        dmc.NotificationProvider(position="top-right"),
+        # Main application shell
+        dmc.AppShell(
+            [
+                create_header(),
+                create_navbar(opened=True),
+                create_aside(),
+                dmc.AppShellMain(
+                    dash.page_container,
+                    id="main-content",
+                ),
+                create_footer(),
+            ],
+            header={"height": HEADER_HEIGHT},
+            navbar={"width": NAVBAR_WIDTH, "breakpoint": "sm", "collapsed": {"mobile": True, "desktop": False}},
+            aside={"width": ASIDE_WIDTH, "breakpoint": "md", "collapsed": {"desktop": True, "mobile": True}},
+            footer={"height": FOOTER_HEIGHT},
+            padding="md",
+            id="appshell",
+        ),
+    ],
     id="mantine-provider",
     forceColorScheme="light",
 )
@@ -147,6 +174,7 @@ try:
     from aiml_studio.callbacks import (  # noqa: F401
         analytics_callbacks,
         data_sources_callbacks,
+        global_callbacks,
         help_callbacks,
         home_callbacks,
         logs_callbacks,
